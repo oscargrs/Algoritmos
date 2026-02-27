@@ -36,15 +36,15 @@
         let rServicos = Number(ipt_servicos.value);
         let recebido = rPecas + rServicos;
         let imposto = Number(ipt_imposto.value);
-        let valorImposto = recebido * (imposto / 100);
+        let taxa = recebido * (imposto / 100);
         let gastos = Number(ipt_gastos.value);
-        let saldo = recebido - valorImposto - gastos;
+        let saldo = recebido - taxa - gastos;
         acumulado += saldo;
 
         div_mensagem.innerHTML += `<br><br>
         Resumo do mês ${mes} <br>
         Total recebido = R$${recebido} <br>
-        Valor do imposto = R$${valorImposto} <br>
+        Valor do imposto = R$${taxa} <br>
         Saldo final de R$${saldo} <br>
         Acumulado até o momento = R$${acumulado}
         <br>`;
