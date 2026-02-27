@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h4>Insira sua nota da escola:</h4>
+    <input id="input_notaEscola" type="text" />
+    <br><br>
+    <button id="button_opiniaoVo" onclick="opiniaoVo ()">Opinião da avó</button>
+    <button id="button_opiniaoMae" onclick="opiniaoMae ()">Opinião da mãe</button>
+    <p id="opiniao"></p>
+</body>
+</html>
+
+<script>
+    function opiniaoVo () {
+        document.getElementById("opiniao").textContent = "Muito bem, que neto inteligente, porque tirou " + input_notaEscola.value;
+    }
+    function opiniaoMae () {
+        document.getElementById("opiniao").textContent = "Não fez mais que tua obrigação com essa nota " + input_notaEscola.value;
+    }
+</script>

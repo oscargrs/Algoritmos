@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h4>Insira o nome do filme:</h4>
+    <input id="input_nomeFilme" type="text" value="" />
+    <h4>Insira o horário da sessão:</h4>
+    <input id="input_hrSessao" type="text" value="" />
+    <button onclick="confirmarIngresso()">Confirmar Ingresso</button>
+</body>
+</html>
+
+<script>
+    function confirmarIngresso() {
+        alert("Ingresso confirmado para o filme " + input_nomeFilme.value + " no horário " + input_hrSessao.value);
+    }
+</script>

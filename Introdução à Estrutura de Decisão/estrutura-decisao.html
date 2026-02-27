@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Decisão</title>
+</head>
+<body>
+    <h1>Estrutura de Decisão</h1>
+    
+    Idade: 
+    <input type="text" id="ipt_idade" /> <br>
+    <button onclick="verificar()">Verificar</button> <br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        let idade = Number(ipt_idade.value);
+
+        if (idade >= 18) {
+            div_mensagem.innerHTML = `Maior de idade!`
+        }
+        if (idade < 18) {
+            div_mensagem.innerHTML = `Menor de idade!`
+        }
+    }
+</script>

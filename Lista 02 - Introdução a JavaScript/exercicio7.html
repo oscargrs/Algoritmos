@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h4>Insira o nome do pet:</h4>
+    <input id="input_nomePet" type="text" value="" />
+    <h4>Insira a espécie do pet:</h4>
+    <input id="input_especie" type="text" value="" />
+    <br><br>
+    <button onclick="identificarPet()">Identificar Pet</button>
+</body>
+</html>
+
+<script>
+    function identificarPet() {
+        alert("O seu pet se chama " + input_nomePet.value + " e ele é um " + input_especie.value);
+    }
+</script>

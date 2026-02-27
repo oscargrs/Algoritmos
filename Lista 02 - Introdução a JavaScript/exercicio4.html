@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <h4>Insira o nome da sua rua:</h4>
+    <input id="input_nomeRua" type="text" value="" />
+    <h4>Insira o número da sua casa:</h4>
+    <input id="input_numCasa" type="text" value="" />
+    <br><br>
+    <button id="button_ondeEuMoro" onclick="ondeEuMoro ()">Onde eu moro</button>
+</body>
+</html>
+
+<script>
+    function ondeEuMoro () {
+        alert("Seu logradouro é " + input_nomeRua.value + "\n" + "O número do seu logradouro é " + input_numCasa.value);
+    }
+</script>

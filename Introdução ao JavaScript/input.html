@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campos de Entrada</title>
+</head>
+
+<body>
+    <h1>Página com campos de entrada</h1>
+    Nome:
+    <input id="input_nome" type="text" value="Insira seu nome..." />
+    <!-- auto-closing tag -->
+    <button onclick="cumprimentar()">Cumprimentar</button>
+</body>
+
+</html>
+
+<script>
+    function cumprimentar () {
+        alert("Olá, " + input_nome.value + "!");
+    }
+</script>

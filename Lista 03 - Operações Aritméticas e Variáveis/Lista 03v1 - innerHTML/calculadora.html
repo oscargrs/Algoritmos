@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+
+    Insira o primeiro termo:
+    <input type="number" id="ipt_n1" /> <br>
+    Insira o segundo termo:
+    <input type="number" id="ipt_n2" /> <br>
+
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="dividir()">Dividir</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <button onclick="somar()">Somar</button> <br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function multiplicar() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 * n2;
+
+        div_mensagem.innerHTML = `O resultado da multiplicação entre os termos ${n1} e ${n2} é: ${resultado}`
+    }
+
+    function dividir() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 / n2;
+
+        div_mensagem.innerHTML = `O resultado da divisão entre os termos ${n1} e ${n2} é: ${resultado}`
+    }
+
+    function subtrair() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 - n2;
+
+        div_mensagem.innerHTML = `O resultado da subtração entre os termos ${n1} e ${n2} é: ${resultado}`
+    }
+
+    function somar() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 + n2;
+
+        div_mensagem.innerHTML = `O resultado da soma entre os termos ${n1} e ${n2} é: ${resultado}`
+    }    
+    
+    function exponenciar() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 ** n2;
+
+        div_mensagem.innerHTML = `O resultado da exponenciação entre os termos ${n1} e ${n2} é: ${resultado}`
+    }
+
+    function resto() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resultado = n1 % n2;
+
+        div_mensagem.innerHTML = `O resto da divisão entre os termos ${n1} e ${n2} é: ${resultado}`
+    }
+</script>

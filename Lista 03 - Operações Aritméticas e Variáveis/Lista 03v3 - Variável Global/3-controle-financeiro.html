@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+    <h1>Controle Financeiro Mensal de uma empresa</h1>
+
+    Insira o valor recebido pela venda de peças:
+    <input type="number" id="ipt_pecas" /> <br>
+
+    Insira o valor recebido pela venda de serviços:
+    <input type="number" id="ipt_servicos" /> <br>
+
+    Insira o percentual de imposto sobre os valores recebidos:
+    <input type="number" id="ipt_imposto" /> <br>
+
+    Insira o valor dos gastos realizados no mês:
+    <input type="number" id="ipt_gastos" /> <br> <br>
+
+    <button onclick="acumular()">Acumular</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let mes = 0;
+    let acumulado = 0;
+
+    function acumular() {
+        mes ++;
+        let rPecas = Number(ipt_pecas.value);
+        let rServicos = Number(ipt_servicos.value);
+        let recebido = rPecas + rServicos;
+        let imposto = Number(ipt_imposto.value);
+        let valorImposto = recebido * (imposto / 100);
+        let gastos = Number(ipt_gastos.value);
+        let saldo = recebido - valorImposto - gastos;
+        acumulado += saldo;
+
+        div_mensagem.innerHTML += `<br><br>
+        Resumo do mês ${mes} <br>
+        Total recebido = R$${recebido} <br>
+        Valor do imposto = R$${valorImposto} <br>
+        Saldo final de R$${saldo} <br>
+        Acumulado até o momento = R$${acumulado}
+        <br>`;
+    }
+</script>
