@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h1>Financiamento da Casa própria</h1>
+
+    Insira o valor da renda familiar:
+    <input type="number" id="ipt_renda" /> <br>
+
+    Insira o valor da prestação:
+    <input type="number" id="ipt_prestacao" /> <br>
+
+    <button onclick="verificar()">Verificar financiamento</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        let renda = Number(ipt_renda.value);
+        let prestacao = Number(ipt_prestacao.value);
+        let porcentagemRenda = (prestacao / renda) * 100;
+
+        div_mensagem.innerHTML = `A prestação corresponde a ${porcentagemRenda}% da renda familiar`;
+
+        if (porcentagemRenda > 30) {
+            div_mensagem.innerHTML += `<br><span style="color: red; font-weight: bold;">Será necessário complementar a renda familiar</span>`;
+        }
+    }
+</script>
