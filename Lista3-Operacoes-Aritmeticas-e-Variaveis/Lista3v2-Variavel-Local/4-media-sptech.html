@@ -1,17 +1,3 @@
-<!--
-4. Cálculo da média da SPTech
-
-Na faculdade SPTech o aluno tem 2 notas: A da "avaliação continuada" e a da "avaliação semestral". A média final é a soma simples entre 40% da "continuada" e 60% da "semestral". Assim, para ajudar um aluno para saber o quanto precisa para passar de semestre e estagiar em empresas como C6Bank, Tivit, Banco Safra, Deloitte, HP etc, crie um programa que:  
-
-a) Solicite a nota que ele tirou na "continuada" e na "semestral"  
-
-b) Solicite o nome do aluno  
-
-c) Calcule sua média  
-
-d) Exiba uma frase como esta "A média de NOME será de MEDIA". Onde NOME é o valor informado em b) e MEDIA, o valor calculado em c)
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -22,10 +8,28 @@ d) Exiba uma frase como esta "A média de NOME será de MEDIA". Onde NOME é o v
 <body>
     <h1>Cálculo da média da SPTech</h1>
 
-    
+    Insira a nota da continuada:
+    <input type="number" id="ipt_continuada" /> <br>
+
+    Insira a nota semestral:
+    <input type="number" id="ipt_semestral" /> <br>
+
+    Insira seu nome:
+    <input type="text" id="ipt_nome" /> <br>
+
+    <button onclick="calcular()">Calcular a média</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    
+    function calcular() {
+        let nome = ipt_nome.value;
+        let continuada = Number(ipt_continuada.value) * 0.4;
+        let semestral = Number(ipt_semestral.value) * 0.6;
+        let media = continuada + semestral;
+
+        div_msg.innerHTML = `A média de ${nome} será de ${media}`;
+    }
 </script>

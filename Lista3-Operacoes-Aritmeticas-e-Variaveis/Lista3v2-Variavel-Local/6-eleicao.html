@@ -1,33 +1,3 @@
-<!--
-6. Eleição
-
-Crie um programa o qual:  
-
-a) Solicite a quantidade de votos que o "Candidato A" teve na eleição  
-
-b) Solicite a quantidade de votos que o "Candidato B" teve na eleição  
-
-c) Solicite a quantidade de votos brancos que houve na eleição  
-
-d) Solicite a quantidade de votos nulos que houve na eleição  
-
-e) Ao clicar em "Resultado da Eleição", exibir textos conforme o exemplo abaixo:  
-
-    Total de votos: 200  
-
-    Candidato A: 40% (80 votos)  
-
-    Candidato B: 35% (70 votos)  
-
-    Inválidos: 25% (50 votos)  
-
-A quantidade de votos "Inválidos" é a soma de brancos e nulos - valores colhidos nos itens c) e d) -  
-
-Não se preocupe em mostrar primeiro o "vencedor". Não temos como saber isso com o que aprendemos na programação até aqui ;)   
-
-Mostre os candidatos na ordem que quiser.  
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,10 +8,36 @@ Mostre os candidatos na ordem que quiser.
 <body>
     <h1>Eleição</h1>
 
+    Insira a quantidade de votos para o "Candidato A": <br>
+    <input type="number" id="ipt_cA" /> <br>
 
+    Insira a quantidade de votos para o "Candidato B": <br>
+    <input type="number" id="ipt_cB" /> <br>
+
+    Insira a quantidade de votos em branco: <br>
+    <input type="number" id="ipt_branco" /> <br>
+
+    Insira a quantidade de votos nulos: <br>
+    <input type="number" id="ipt_nulo" /> <br> <br>
+
+    <button onclick="resultado()">Resultado da Eleição</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    
+    function resultado() {
+        let cA = Number(ipt_cA.value);
+        let cB = Number(ipt_cB.value);
+        let invalidos = Number(ipt_branco.value) + Number(ipt_nulo.value);
+        let total = cA + cB + invalidos;
+
+        div_msg.innerHTML = `
+        Total de votos: ${total} <br>  
+        Candidato A: ${(cA / total) * 100}% (${cA} votos) <br>
+        Candidato B: ${(cB / total) * 100}% (${cB} votos) <br>
+        Inválidos: ${(invalidos / total) * 100}% (${invalidos} votos)
+        `;
+    }
 </script>
