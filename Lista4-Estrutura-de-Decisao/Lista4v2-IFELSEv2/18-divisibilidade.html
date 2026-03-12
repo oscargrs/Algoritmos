@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+</head>
+<body>
+    <h1>Teste de divisibilidade</h1>    
+
+    Informe o primeiro número:
+    <input type="number" id="ipt_n1" /> <br>
+
+    Informe o segundo número:
+    <input type="number" id="ipt_n2" /> <br> <br>
+
+    <button onclick="testar()">Testar</button>
+
+    <div id="div_msg"></div>
+
+    <img src="..\negativo.jpg\" alt="">
+</body>
+</html>
+
+<script>
+    function testar() {
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+
+        let resto = n1 % n2;
+
+        if (resto == 0) {
+            div_msg.innerHTML = `<img src="positivo.png" alt="">`;
+        } else {
+            div_msg.innerHTML = `<img src="negativo.jpg" alt="">`;
+        }
+    }
+</script>

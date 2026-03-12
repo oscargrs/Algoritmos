@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 22</title>
+</head>
+<body>
+    <h1>Análise de temperatura</h1>    
+
+    Informe a temperatura do ambiente:
+    <input type="number" id="ipt_temp" /> <br>
+
+    <button onclick="verificar()">Verificar clima</button>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        let temp = Number(ipt_temp.value);
+
+        if (temp < 10) {
+            div_msg.innerHTML = `<img src="fresco.jpg">`;
+        } else {
+            div_msg.innerHTML = `<img src="estragado.jpg">`;
+        }
+    }
+</script>
