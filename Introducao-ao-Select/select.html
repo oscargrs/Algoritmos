@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Marca:
+
+    <select id="select_marca">
+        <option value="null">Selecione uma opção</option>
+        <option>Nike</option>
+        <option>Gucci</option>
+        <option>Jordan</option>
+        <option>Adidas</option>
+    </select> <br>
+
+    <button onclick="selecionar()">Selecionar Marca</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function selecionar() {
+        let marca = select_marca.value;
+
+        if (marca == 'null') {
+            div_msg.innerHTML = `Marca não selecionada`; 
+        } else {
+            div_msg.innerHTML = `Marca selecionada: ${marca}`;
+        }
+    }
+</script>
