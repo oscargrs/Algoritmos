@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 14</title>
+  </head>
+
+  <body>
+    <h1>Representação do humor do usuário</h1>
+
+    Como está se sentindo hoje?
+    <input type="text" id="ipt_humor" /> <br />
+
+    <button onclick="mostrar()">Mostrar Humor</button>
+
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  function mostrar() {
+    let humor = ipt_humor.value;
+
+    if (humor == "Feliz") {
+      div_msg.innerHTML = `<img src="./img/Feliz.png"`;
+    } else if (humor == "Triste") {
+      div_msg.innerHTML = `<img src="./img/Triste.png"`;
+    } else if (humor == "Bravo") {
+      div_msg.innerHTML = `<img src="./img/Bravo.png"`;
+    } else if (humor == "Surpreso") {
+      div_msg.innerHTML = `<img src="./img/Surpreso.png"`;
+    } else if (humor == "Cansado") {
+      div_msg.innerHTML = `<img src="./img/Cansado.png"`;
+    }
+  }
+</script>

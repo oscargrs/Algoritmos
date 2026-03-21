@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <h1>Análise de Parcelamento de Compra</h1>
+
+    Forma de pagamento:
+    <input type="text" id="ipt_pagamento"> <br>
+
+    <button onclick="analisar()">Analisar compra</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+        let pagamento = ipt_pagamento.value;
+
+        if (pagamento == 'dinheiro' || pagamento == 'débito') {
+            div_msg.innerHTML = `Você terá que pagar a vista`;
+        } else {
+            div_msg.innerHTML = `Pagamento poderá ser parcelado`;
+        }
+    }
+</script>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 3</title>
+  </head>
+
+  <body>
+    <h1>Simulador de Preço do Bilhete Único de São Paulo</h1>
+
+    Selecione o seu tipo de passageiro:
+    <select id="select_passageiro">
+      <option>Comum</option>
+      <option>Estudante</option>
+      <option>Idoso/PNE</option>
+    </select>
+    <br />
+
+    Selecione a passagem a ser simulada:
+    <select id="select_passagem">
+      <option>Passagem única</option>
+      <option>Passagem integração</option>
+    </select>
+    <br />
+
+    <button onclick="simular()">Simular preço</button>
+
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  function simular() {
+    let passageiro = select_passageiro.value;
+    let passagem = select_passagem.value;
+    let unica = 4.4;
+    let integracao = 5.9;
+
+    if (passageiro == 'Comum' && passagem == 'Passagem única') {
+      div_msg.innerHTML = `Valor da passagem escolhida: R$${unica}`;
+    } else if (passageiro == 'Comum' && passagem == 'Passagem integração') {
+      div_msg.innerHTML = `Valor da passagem escolhida: R$${integracao}`;
+    } else if (passageiro == 'Estudante' && passagem == 'Passagem única') {
+      div_msg.innerHTML = `Valor da passagem escolhida: R$${unica * 0.5}`;
+    } else if (passageiro == 'Estudante' && passagem == 'Passagem integração') {
+      div_msg.innerHTML = `Valor da passagem escolhida: R$${integracao * 0.5}`;
+    } else {
+      div_msg.innerHTML = `Passagem gratuita`;
+    }
+  }
+</script>
