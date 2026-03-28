@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h1>Senha Forte ou Fraca</h1>
+
+    Insira uma senha:
+    <input type="text" id="ipt_senha" oninput="validar()"> 
+    <br> <br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function validar() {
+        let senha = ipt_senha.value;
+        let f = 0;
+
+        if (senha.length >= 8) {
+            f++;
+        } 
+        if (senha.toLowerCase() != senha) {
+            f++;
+        } 
+        if (senha.toUpperCase() != senha) {
+            f++;
+        } 
+
+        if (f == 1) {
+            f = 'Fraca';
+        } else if (f == 2) {
+            f = 'Média';
+        } else if (f >= 3) {
+            f = 'Forte';
+        } else {
+            f = 'Insegura';
+        }
+        div_msg.innerHTML = `A senha é: ${f}`;
+    }
+</script>

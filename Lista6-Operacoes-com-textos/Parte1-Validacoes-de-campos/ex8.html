@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h1>Jogo da Palavra Secreta</h1>
+
+    Insira uma letra:
+    <input type="text" id="ipt_letra" maxlength="1" placeholder="ex: A"> <br>
+    
+    <button onclick="verificar()">Verificar Letra</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    let secreta = `azul`;
+
+    function verificar() {
+        let letra = ipt_letra.value;
+
+        if (secreta.includes(letra.toLowerCase())) {
+            div_msg.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+        } else {
+            div_msg.innerHTML = `A letra ${letra} não aparece na palavra secreta!`;
+        }
+    }
+</script>

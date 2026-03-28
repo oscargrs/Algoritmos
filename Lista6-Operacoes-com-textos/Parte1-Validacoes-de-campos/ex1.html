@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+
+    Insira uma frase:
+    <input type="text" id="ipt_frase">
+
+    <button onclick="analisar()">Analisar Frase</button>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+        let frase = ipt_frase.value;
+
+        div_msg.innerHTML = `Tamanho da Frase: ${frase.length}`;
+
+        if (frase.length < 10) {
+            div_msg.innerHTML += `<br><span style="color: red;">Frase Curta!</span>`;
+        } else {
+            div_msg.innerHTML += `<br><span style="color: blue;">Frase Longa!</span>`;
+        }
+    }
+</script>

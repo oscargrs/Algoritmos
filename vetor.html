@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetor</title>
+</head>
+<body>
+    <h1>Vetores</h1>
+
+    <h2>Lista de frutas:</h2>
+
+    Fruta:
+    <input type="text" id="ipt_fruta">
+    <button onclick="adicionar()">Adicionar Fruta</button> <br> <br>
+
+    <button onclick="exibir()">Exibir lista</button>
+    <button onclick="pesquisarFruta()">Pesquisar Fruta</button>
+    <button onclick="pesquisarIndice()">Pesquisar Índice</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    let lista = [];
+
+    function adicionar() {
+        let fruta = ipt_fruta.value;
+        lista.push(fruta); 
+    }
+
+    function exibir() {
+        let fruta = ipt_fruta.value;
+        div_msg.innerHTML = lista.toString().replaceAll(',', '<br>')    
+    }
+
+    function pesquisarFruta() {
+        let fruta = ipt_fruta.value;
+        if (lista.includes(fruta)) {
+            div_msg.innerHTML = `A fruta está na posição ${lista.indexOf(fruta)}.`
+        } else {
+            div_msg.innerHTML = `A fruta não está na lista.`;
+        }
+    }
+
+    function pesquisarIndice() {
+        let indice = ipt_fruta.value;
+
+        if (indice < 0 || indice >= lista.length || isNaN(indice)) {
+            div_msg.innerHTML = `Índice inválido.`;
+        } else {
+            div_msg.innerHTML = `A fruta é ${lista[indice]}.`;
+        }
+    }
+</script>

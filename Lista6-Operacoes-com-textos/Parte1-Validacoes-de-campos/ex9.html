@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Jogo da Palavra Secreta</title>
+</head>
+<body onload="iniciarJogo()">
+    <h1>Super Jogo da Palavra</h1>
+    <p id="boasVindas"></p>
+    
+    <input type="text" id="inputLetra" maxlength="1" placeholder="Digite uma letra">
+    <button onclick="verificarLetra()">Verificar Letra</button>
+
+    <p id="mensagemFeedback">Aguardando sua primeira tentativa...</p>
+    <h2 id="contadorFaltantes"></h2>
+</body>
+</html>
+
+<script>
+    let palavraSecreta = "Aurelio"; 
+
+    let letrasPendentes = palavraSecreta.toLowerCase();
+    let totalFaltantes = palavraSecreta.length;
+
+    function iniciarJogo() {
+        boasVindas.innerHTML = `Palavra secreta definida! Descubra todos os ${totalFaltantes} caracteres!`;
+        contadorFaltantes.innerHTML = `Faltam: ${totalFaltantes}`;
+    }
+
+    function verificarLetra() {
+        let input = inputLetra.value;
+        let msg = mensagemFeedback.value;
+        let contadorTxt = document.getElementById("contadorFaltantes");
+        
+        let letraDigitada = input.value.toLowerCase();
+
+        if (letraDigitada === "") return;
+
+        if (letrasPendentes.includes(letraDigitada)) {
+            letrasPendentes = letrasPendentes.replace(letraDigitada, "");
+            totalFaltantes--;
+
+            msg.innerText = "O caractere " + letraDigitada.toUpperCase() + " aparece! Boa!";
+            msg.style.color = "green";
+        } else {
+            msg.innerText = "O caractere " + letraDigitada.toUpperCase() + " NÃO aparece (ou já foi descoberto)!";
+            msg.style.color = "red";
+        }
+
+        contadorTxt.innerText = "Faltam: " + totalFaltantes;
+
+        if (totalFaltantes === 0) {
+            msg.innerText = "Parabéns, você descobriu todas as letras da palavra secreta " + palavraSecreta.toUpperCase() + "!";
+            msg.style.color = "#27ae60";
+            input.disabled = true;
+            document.querySelector("button").disabled = true;
+        }
+
+        input.value = "";
+        input.focus();
+    }
+</script>
+
+<!--
+(DESAFIO) 9. Super Jogo da Palavra Secreta
+
+Crie um programa que:  
+
+a) Defina uma palavra secreta no código, logo ao iniciar a página (exemplo: "Aurélio").
+
+    a1) Após carregar a página, exiba: "Palavra secreta definida! Descubra todos os XX caracteres!", onde XX é o tamanho da palavra secreta.
+
+b) Solicite ao usuário uma letra por vez (apenas 1 caractere).
+
+c) Ao clicar num botão "Verificar Letra":
+
+    c1) Se a letra existir na palavra secreta, exiba "O caractere XX aparece na palavra secreta! Faltam YY caracteres", onde YY é o número de caracteres que ainda precisam ser descobertos.
+
+    c2) Se a letra não existir na palavra secreta, exiba "O caractere XX NÃO aparece na palavra secreta! Faltam YY caracteres".
+
+d) Após cada verificação de letra, atualize o contador de caracteres que faltam.
+
+    d1) Se ainda existirem caracteres não descobertos, continue o jogo.
+
+    d2) Se o contador chegar a zero, mostre a mensagem final: "Parabéns, você descobriu todas as letras da palavra secreta XXXXXXX!" e não faça mais nada.
+
+OBS: Para comparações de letras, use .toUpperCase() ou .toLowerCase() para que o jogo não seja sensível a maiúsculas/minúsculas.
+
+OBS2: Para a contagem dos caracteres restantes, você pode criar uma variável de contador para cada caractere e somá-los, como: 
+    "Abacate" (3 letras A, 1 letra B, 1 letra C, 1 letra T e 1 letra E, total 7 pendentes)
+
+    "morango" (1 letra M, 2 letras O, 1 letra R, 1 letra A, 1 letra N e 1 letra G, total 7 pendentes)
+
+OBS3: Ao passar por uma letra válida, reduz uma letra pendente na contagem, por exemplo: 
+
+    "morango" (1 letra M, 2 letras O, 1 letra R, 1 letra A, 1 letra N e 1 letra G)
+
+  Ao verificar a letra "o", deve reduzir de 2 para 1 "o" pendentes, atualizando o total. 
+
+  Ao verificar de novo a letra "o", reduz de 1 para 0 "o" pendentes, atualizando o total.
+
+  Ao verificar de novo a letra "o", exibe a mensagem de "Não aparece na palavra".
+
+OBS4: Para melhorar a experiência do jogo, após clicar no botão, você pode limpar o valor da input (input_frase.value = '') e focar o campo (input_frase.focus()), assim, o usuário não precisará limpar o campo para digitar a próxima letra, pois após clicar no botão, o programa vai limpar a input e focá-la automaticamente.
+
+OBS5: O uso de CSS é livre, faça sua imaginação tomar forma!
+-->

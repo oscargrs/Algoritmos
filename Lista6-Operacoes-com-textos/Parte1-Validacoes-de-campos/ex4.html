@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <h1>Comparador de Palavras</h1>
+
+    Insira a primeira palavra:
+    <input type="text" id="ipt_p1"> <br>
+
+    Insira a segunda palavra:
+    <input type="text" id="ipt_p2"> <br>
+    <button onclick="validar()">Validar</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function validar() {
+        let p1 = ipt_p1.value;
+        let p2 = ipt_p2.value;
+
+        if (p1 == p2) {
+            div_msg.innerHTML = `As palavras ${p1} e ${p2} são exatamente iguais!`;
+        } else if (p1.toLowerCase() == p2.toLowerCase()) {
+            div_msg.innerHTML = `As palavras ${p1} e ${p2} possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)`;
+        } else {
+            div_msg.innerHTML = `As palavras ${p1} e ${p2} são completamente diferentes!`;
+        }
+    }
+</script>
