@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+</head>
+<body>
+    <button onclick="contar()">Contar</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    let contador = 0;
+    let mensagem = '';
+
+    function contar() {
+        while (contador < 1111111) {
+            contador++;
+            mensagem += `Contador: ${contador}<br>`;
+        }
+        
+        div_msg.innerHTML = mensagem;
+    }
+</script>

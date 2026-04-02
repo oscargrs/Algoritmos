@@ -8,13 +8,24 @@
 <body>
     <h1>Caça às Frutas: Descubra se está na Lista</h1>
 
+    <input type="text" id="ipt_busca" placeholder="Pesquisar o nome de uma fruta (ex: Banana)">
+    <button onclick="buscar()">Pesquisar Fruta</button>
 
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let lista = ['banana', 'morango', 'maçã', 'abacaxi', 'kiwi'];
 
+    function buscar() {
+        let busca = ipt_busca.value;
+
+        if (lista.includes(busca.toLowerCase())) {
+            div_msg.innerHTML = `A fruta ${busca} existe na lista.`;
+        } else {
+            div_msg.innerHTML = `Não existe a fruta ${busca} na lista.`;
+        }
     }
 </script>
 

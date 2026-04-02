@@ -8,13 +8,27 @@
 <body>
     <h1>Filmes em Cores: Azul e Vermelho Alternados</h1>
 
+    Insira o nome dos filmes que você mais gosta:<br>
+    <input type="text" id="ipt_filme"><br>
 
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let favoritos = [];
 
+    function cadastrar() {
+        let filme = ipt_filme.value;
+        favoritos.push(filme);
+
+        if (favoritos.length % 2 == 0) {
+            div_msg.innerHTML += `<span style="color: red;">${filme}</span><br>`;
+        } else {
+            div_msg.innerHTML += `<span style="color: blue;">${filme}</span><br>`;
+        }
     }
 </script>
 

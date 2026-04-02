@@ -8,13 +8,31 @@
 <body>
     <h1>Painel de Favoritos: Seus Filmes em Destaque</h1>
 
+    Insira o nome dos filmes que você mais gosta, um por vez e em ordem de primeiro, segundo, terceiro e assim por diante:<br>
+    <input type="text" id="ipt_filme"><br>
 
+    <button onclick="cadastrar()">Cadastrar Filme</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let favoritos = [];
 
+    function cadastrar() {
+        let filme = ipt_filme.value;
+        favoritos.push(filme);
+        
+        div_msg.innerHTML = `Seu filme favorito: ${favoritos[0]}<br><br>`;
+        
+        if (favoritos.length >= 3) {
+            div_msg.innerHTML += `Seu 3º filme favorito: ${favoritos[2]}<br><br>`;
+        } else {
+            div_msg.innerHTML += `Seu 3º filme favorito: Ainda não existe<br><br>`;
+        }
+        
+        div_msg.innerHTML += `Total de filmes cadastrados: ${favoritos.length}`;
     }
 </script>
 

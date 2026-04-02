@@ -8,13 +8,51 @@
 <body>
     <h1>Diário de Viagens: Do Primeiro ao Último Destino</h1>
 
+    Insira o destino da viagem: <br>
+    <input type="text" id="ipt_destino">
 
+    <button onclick="adicionar()">Adicionar</button> <br>
+
+    <button onclick="primeira()">Primeira Viagem</button>
+
+    <button onclick="terceira()">Terceira Viagem</button>
+
+    <button onclick="ultima()">Última Viagem</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let viagens = [];
 
+    function adicionar() {
+        let destino = ipt_destino.value;
+        viagens.push(destino);
+    }
+
+    function primeira() {
+        if (viagens.length >= 1) { 
+            div_msg.innerHTML = viagens[0];     
+        } else {
+            div_msg.innerHTML = `Ainda não viajou`;
+        }    
+    }
+
+    function terceira() {
+        if (viagens.length >= 3) {
+            div_msg.innerHTML = viagens[2];
+        } else {
+            div_msg.innerHTML = `Ainda não fez a terceira viagem`;
+        }
+    }
+
+    function ultima() {
+        if (viagens.length >= 1) {
+            div_msg.innerHTML = viagens[viagens.length - 1];
+        } else {
+            div_msg.innerHTML = `Ainda não viajou`;
+        }
     }
 </script>
 

@@ -8,7 +8,7 @@
 <body onload="iniciarJogo()">
     <h1>Super Jogo da Palavra</h1>
     <p id="boasVindas"></p>
-    
+
     <input type="text" id="inputLetra" maxlength="1" placeholder="Digite uma letra">
     <button onclick="verificarLetra()">Verificar Letra</button>
 
@@ -18,8 +18,7 @@
 </html>
 
 <script>
-    let palavraSecreta = "Aurelio"; 
-
+    let palavraSecreta = "Aurelio";
     let letrasPendentes = palavraSecreta.toLowerCase();
     let totalFaltantes = palavraSecreta.length;
 
@@ -29,36 +28,23 @@
     }
 
     function verificarLetra() {
-        let input = inputLetra.value;
-        let msg = mensagemFeedback.value;
-        let contadorTxt = document.getElementById("contadorFaltantes");
-        
-        let letraDigitada = input.value.toLowerCase();
-
-        if (letraDigitada === "") return;
-
-        if (letrasPendentes.includes(letraDigitada)) {
-            letrasPendentes = letrasPendentes.replace(letraDigitada, "");
-            totalFaltantes--;
-
-            msg.innerText = "O caractere " + letraDigitada.toUpperCase() + " aparece! Boa!";
-            msg.style.color = "green";
-        } else {
-            msg.innerText = "O caractere " + letraDigitada.toUpperCase() + " NÃO aparece (ou já foi descoberto)!";
-            msg.style.color = "red";
+        let letraDigitada = inputLetra.value.toLowerCase();
+        if (letraDigitada !== "") {
+            if (totalFaltantes > 0) {
+                if (letrasPendentes.includes(letraDigitada)) {
+                    letrasPendentes = letrasPendentes.replace(letraDigitada, "");
+                    totalFaltantes--;
+                    mensagemFeedback.innerHTML = `O caractere ${letraDigitada.toUpperCase()} aparece na palavra secreta! Faltam: ${totalFaltantes}`;
+                } else {
+                    mensagemFeedback.innerHTML = `O caractere ${letraDigitada.toUpperCase()} NÃO aparece na palavra secreta! Faltam: ${totalFaltantes}`;
+                }
+                contadorFaltantes.innerHTML = `Faltam: ${totalFaltantes}`;
+                if (totalFaltantes === 0) {
+                    mensagemFeedback.innerHTML = `Parabéns, você descobriu todas as letras da palavra secreta ${palavraSecreta.toUpperCase()}!`;
+                }
+                inputLetra.value = "";
+            }
         }
-
-        contadorTxt.innerText = "Faltam: " + totalFaltantes;
-
-        if (totalFaltantes === 0) {
-            msg.innerText = "Parabéns, você descobriu todas as letras da palavra secreta " + palavraSecreta.toUpperCase() + "!";
-            msg.style.color = "#27ae60";
-            input.disabled = true;
-            document.querySelector("button").disabled = true;
-        }
-
-        input.value = "";
-        input.focus();
     }
 </script>
 

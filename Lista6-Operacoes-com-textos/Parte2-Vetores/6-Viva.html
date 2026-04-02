@@ -8,13 +8,23 @@
 <body>
     <h1>Lista Viva de Filmes Favoritos</h1>
 
+    Insira o nome dos filmes que você mais gosta:<br>
+    <input type="text" id="ipt_filme"><br>
 
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let favoritos = [];
 
+    function cadastrar() {
+        let filme = ipt_filme.value;
+        favoritos.push(filme);
+
+        div_msg.innerHTML += `${favoritos[favoritos.length - 1]}<br>`;
     }
 </script>
 

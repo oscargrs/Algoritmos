@@ -8,13 +8,33 @@
 <body>
     <h1>Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
 
+    Insira o nome dos filmes que você mais gosta, um por vez e em ordem de primeiro, segundo, terceiro e assim por diante: <br>
+    <input type="text" id="ipt_filme"> <br>
 
+    <button onclick="cadastrar()">Cadastrar filme</button>
+
+    <button onclick="verFavoritos()">Ver Favoritos</button>
+
+    <div id="div_msg"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    let favoritos = [];
 
+    function cadastrar() {
+        let filme = ipt_filme.value;
+        favoritos.push(filme);
+        div_msg.innerHTML += `Cadastrado!<br>`;
+    }
+
+    function verFavoritos() {
+        div_msg.innerHTML = favoritos.toString().replaceAll(',', '<br>');
+        div_msg.innerHTML += `<br><br>Total: ${favoritos.length}`;
+        div_msg.innerHTML += `<br><br>
+        O filme que mais gosta é ${favoritos[0]}.
+        <br><br>
+        E desses, o que menos gosta é ${favoritos[favoritos.length - 1]}.`;
     }
 </script>
 
