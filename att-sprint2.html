@@ -69,7 +69,7 @@
             while (cMacaron < qtdMacaron) {
                 cMacaron++;
                 venda++;
-                mensagem += `Venda ${venda}   -   <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg" width="50px">   -   R$${pMacaron}<br>`;
+                mensagem += `Venda ${venda} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg" width="50px"> - R$${pMacaron}<br>`;
             }
             
             while (cBrigadeiro < qtdBrigadeiro) {
@@ -87,10 +87,10 @@
             while (cCheesecake < qtdCheesecake) {
                 cCheesecake++;
                 venda++;
-                mensagem += `Venda ${venda}   -   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpS6yaJcvttjlTPYohqV_7Kgc-WjBUwY8iYw&s" width="50px">   -   R$${pCheesecake}<br>`;
+                mensagem += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpS6yaJcvttjlTPYohqV_7Kgc-WjBUwY8iYw&s" width="50px"> - R$${pCheesecake}<br>`;
             }
 
-            mensagem += `<br><Com a quantidade de ${qtdMacaron} Macarons, ${qtdBrigadeiro} Brigadeiros, ${qtdCupcake} Cupcakes e ${qtdCheesecake} Cheesecakes, a venda totalizará R$${totalVenda}`;
+            mensagem += `<br>Com a quantidade de ${qtdMacaron} Macarons, ${qtdBrigadeiro} Brigadeiros, ${qtdCupcake} Cupcakes e ${qtdCheesecake} Cheesecakes, a venda totalizará R$${totalVenda}`;
         }
         div_msg.innerHTML = mensagem;
     }
