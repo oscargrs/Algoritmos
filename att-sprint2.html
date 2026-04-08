@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria</title>
+</head>
+<body>
+    <h1>Atividade 02 - Sprint 02</h1>
+
+    <div class="quantidadeDoces">
+        <h3>Insira a quantidade de cada doce a ser vendido:</h3> 
+        Macarons:
+        <input type="number" id="ipt_qtdMacaron"> <br>    
+        Brigadeiros Gourmets:
+        <input type="number" id="ipt_qtdBrigadeiro"> <br>    
+        Cupcakes:
+        <input type="number" id="ipt_qtdCupcake"> <br>    
+        Cheesecakes:
+        <input type="number" id="ipt_qtdCheesecake"> <br>    
+    </div>
+    <div class="precoDoces">
+        <h3>Insira o preço de cada um dos doces a serem vendidos:</h3>
+
+        Macarons:
+        <input type="number" id="ipt_pMacaron"> <br>    
+        Brigadeiros Gourmets:
+        <input type="number" id="ipt_pBrigadeiro"> <br>    
+        Cupcakes:
+        <input type="number" id="ipt_pCupcake"> <br>    
+        Cheesecakes:
+        <input type="number" id="ipt_pCheesecake"> <br>    
+    </div>
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <div id="div_msg" class="listagem"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        let qtdMacaron = Number(ipt_qtdMacaron.value);
+        let qtdBrigadeiro = Number(ipt_qtdBrigadeiro.value);
+        let qtdCupcake = Number(ipt_qtdCupcake.value);
+        let qtdCheesecake = Number(ipt_qtdCheesecake.value);
+        let pMacaron = Number(ipt_pMacaron.value);
+        let pBrigadeiro = Number(ipt_pBrigadeiro.value);
+        let pCupcake = Number(ipt_pCupcake.value);
+        let pCheesecake = Number(ipt_pCheesecake.value);
+        let mensagem = ``;
+
+        let totalVenda = (qtdMacaron * pMacaron) + (qtdBrigadeiro * pBrigadeiro) + (qtdCupcake * pCupcake) + (qtdCheesecake * pCheesecake); 
+
+        if (
+            qtdMacaron < 0 ||
+            qtdBrigadeiro < 0 ||
+            qtdCupcake < 0 ||
+            qtdCheesecake < 0
+        ) {
+            mensagem = `Números inválidos pois são negativos`;
+        } else {
+            let cMacaron = 0;
+            let cBrigadeiro = 0;
+            let cCupcake = 0;
+            let cCheesecake = 0;
+            let venda = 0;
+
+            while (cMacaron < qtdMacaron) {
+                cMacaron++;
+                venda++;
+                mensagem += `Venda ${venda}   -   <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg" width="50px">   -   R$${pMacaron}<br>`;
+            }
+            
+            while (cBrigadeiro < qtdBrigadeiro) {
+                cBrigadeiro++;
+                venda++;
+                mensagem += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMowk3ozUsXrjPpAxNNng8d2CmUYBDUb5JmQ&s" width="50px"> - R$${pBrigadeiro}<br>`;
+            }
+
+            while (cCupcake < qtdCupcake) {
+                cCupcake++;
+                venda++;
+                mensagem += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqS1T8nIUP-h3M7_BTAmLVVOF3SJ0oZFbSPg&s" width="50px"> - R$${pCupcake}<br>`;
+            }
+
+            while (cCheesecake < qtdCheesecake) {
+                cCheesecake++;
+                venda++;
+                mensagem += `Venda ${venda}   -   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpS6yaJcvttjlTPYohqV_7Kgc-WjBUwY8iYw&s" width="50px">   -   R$${pCheesecake}<br>`;
+            }
+
+            mensagem += `<br><Com a quantidade de ${qtdMacaron} Macarons, ${qtdBrigadeiro} Brigadeiros, ${qtdCupcake} Cupcakes e ${qtdCheesecake} Cheesecakes, a venda totalizará R$${totalVenda}`;
+        }
+        div_msg.innerHTML = mensagem;
+    }
+</script>
