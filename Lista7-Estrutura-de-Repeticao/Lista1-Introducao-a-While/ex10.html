@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    <h1>Pares no Intervalo</h1>
+
+    Insira um intervalo crescente de valores númericos: <br> <br>
+
+    Insira o termo inicial:
+    <input type="number" id="ipt_ni"> <br>
+
+    Insira o termo final:
+    <input type="number" id="ipt_nf"> <br>
+
+    <button onclick="parear()">S2 Pares</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function parear() {
+        let inicio = Number(ipt_ni.value);
+        let fim = Number(ipt_nf.value);
+
+        div_msg.innerHTML = "";
+
+        if (inicio > fim) {
+            div_msg.innerHTML = "Intervalo inválido";
+            return;
+        }
+
+        let contador = inicio;
+
+        while (contador <= fim) {
+            if (contador % 2 == 0) {
+                div_msg.innerHTML += `${contador}<br>`;
+            }
+            contador++;
+        }
+    }
+</script>
+
+<!--
+10. Pares no Intervalo  
+Crie um programa o qual:
+
+a) Solicite um intervalo crescente de valores numéricos    
+
+b) Ao clicar num botão "S2 Pares"...   
+
+c) Exiba, debaixo do botão, todos os números pares contidos no intervalo. 
+-->

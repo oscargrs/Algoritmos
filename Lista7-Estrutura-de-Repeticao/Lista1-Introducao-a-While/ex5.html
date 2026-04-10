@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h1>Corrida de Voltas</h1>
+
+    Insira quantas voltas o carro dará na corrida:
+    <input type="number" id="ipt_voltas"> <br> <br>
+
+    <button onclick="iniciar()">Iniciar corrida!</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function iniciar() {
+        div_msg.innerHTML = "";
+
+        let voltas = Number(ipt_voltas.value);
+        let contador = 0;
+
+        while (contador < voltas) {
+            contador++;
+            div_msg.innerHTML += `Carro dando a ${contador}ª volta<br>`;
+        }
+
+        div_msg.innerHTML += `Corrida finalizada!<br>`;
+    }
+</script>
+
+<!--
+5. Corrida de Voltas
+Crie um programa o qual:
+
+a) Pergunte ao usuário quantas voltas um carro dará numa corrida   
+
+b) Ao clicar num botão "Iniciar corrida!"...   
+
+c) Até que o carro termine a corrida, exiba, debaixo do botão, frases como estas:   
+
+       Carro dando a 1ª volta   
+
+       Carro dando a 2ª volta   
+
+       Carro dando a 3ª volta
+
+       ...   (até a última volta informada pelo usuário)
+
+d) Ao atingir o número de voltas informado, exiba, abaixo de tudo, a frase "Corrida finalizada!" 
+-->

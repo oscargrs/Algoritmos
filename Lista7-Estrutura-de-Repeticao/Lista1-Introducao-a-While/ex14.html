@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+<body>
+    <h1>Dividibilidade</h1>
+
+    Início do intervalo:
+    <input type="number" id="ipt_inicio"> <br>
+
+    Fim do intervalo:
+    <input type="number" id="ipt_fim"> <br>
+
+    Número para teste (3 a 13):
+    <input type="number" id="ipt_div"> <br><br>
+
+    <button onclick="dividir()">Divisível</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function dividir() {
+        div_msg.innerHTML = "";
+
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let div = Number(ipt_div.value);
+
+        if (inicio > fim) {
+            div_msg.innerHTML = "Intervalo inválido";
+            return;
+        }
+
+        if (div < 3 || div > 13) {
+            div_msg.innerHTML = "Número de teste inválido (3 a 13)";
+            return;
+        }
+
+        let contador = inicio;
+
+        while (contador <= fim) {
+            if (contador % div != 0) {
+                div_msg.innerHTML += `${contador}<br>`;
+            }
+            contador++;
+        }
+    }
+</script>
+
+<!--
+14. Dividibilidade  
+Crie um programa o qual:
+
+a) Solicite um intervalo crescente de valores numéricos
+
+b) Solicite um número para teste de divisibilidade, ele tem que estar entre 3 e 13   
+
+c) Ao clicar num botão "Divisível"...   
+
+c) Exiba, debaixo do botão, todos os números contidos no intervalo doitem a que NÃO são divisíveis pelo número do item b.
+-->

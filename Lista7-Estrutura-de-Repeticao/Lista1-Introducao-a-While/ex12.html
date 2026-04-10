@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+</head>
+<body>
+    <h1>Papagaio Falante</h1>
+
+    Digite um número:
+    <input type="number" id="ipt_num"> <br>
+
+    Digite uma frase:
+    <input type="text" id="ipt_frase"> <br><br>
+
+    <button onclick="papagaio()">Papagaio</button>
+</body>
+</html>
+
+<script>
+    function papagaio() {
+        let qtd = Number(ipt_num.value);
+        let frase = ipt_frase.value;
+
+        let contador = 0;
+
+        while (contador < qtd) {
+            contador++;
+            alert(`${frase} ${frase}`);
+        }
+    }
+</script>
+
+<!--
+12. Papagaio Falante
+Crie um programa o qual:
+
+a) Pergunte ao usuário um número  
+
+b) Pergunte ao usuário uma frase  
+
+c) Ao clicar num botão "Papagaio", a frase é exibida N vezes em N alerts, onde N é o número informado em a)
+
+OBS: ao digitar "oi" e "2", devem aparecer 2 alertas, escritos "oi oi"
+
+OBS2: utilize a tecla "enter" ao invés de clicar com o mouse para fechar o alerta, garantindo um melhor funcionamento para testar a quantidade de alertas.
+-->
