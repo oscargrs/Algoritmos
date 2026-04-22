@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+</head>
+<body>
+    <h1>Invasão de Impel Down</h1>
+
+    <span class="">Insira a quantidade de batalhas:</span>
+    <input type="number" id="ipt_qtdBatalhas"> <br>
+
+    <span class="">Insira a quantidade de marinheiros em cada batalha:</span>
+    <input type="number" id="ipt_qtdMarinheiros"> <br>
+    
+    <span class="">Insira a quantidade de carnes disponíveis:</span>
+    <input type="number" id="ipt_qtdCarnes"> <br>
+
+    <button onclick="iniciar()">Iniciar Batalha</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+
+<script>
+    function iniciar() {
+        let batalhas = Number(ipt_qtdBatalhas.value);
+        let marinheiros = Number(ipt_qtdMarinheiros.value);
+        let carnes = Number(ipt_qtdCarnes.value);
+        let energia = 100;
+        let kills = 0;
+
+        let status = 'Luffy saiu vitorioso!';
+            
+        for (let cont = 1; cont <= batalhas; cont++) {
+            if (energia >= 15 || carnes > 0) {
+                if (energia >= 10) {
+                    energia -= 10;
+                } else {
+                    carnes--;
+                    energia = 90;
+                }
+
+                for (let cont = 1; cont <= marinheiros; cont++) {
+                    if (energia >= 5) {
+                        energia -= 5;
+                        kills++;
+                    } else if (carnes > 0) {
+                        carnes--;
+                        energia = 95;
+                        kills++;
+                    } else {
+                        status = 'Luffy saiu derrotado!';
+                    }
+                }
+            } else {
+                status = 'Luffy saiu derrotado!';
+            }
+        }
+
+        exibir.innerHTML = `
+            Resultado: ${status} <br>
+            Quantidade de carnes restantes: ${carnes} <br>
+            Quantidade de marinheiros derrotados: ${kills} <br>
+            Energia restante ao final das batalhas: ${energia} <br> <br>
+        `;
+    }
+</script>
+
+<!--
+Desafio: Invasão de Impel Down
+Durante a invasão à prisão de Impel Down, Luffy precisa enfrentar vários marinheiros em sequência. Seu objetivo é criar um programa que simule essas batalhas utilizando estrutura de repetição (for).
+
+Entradas
+Solicite ao usuário:
+
+Quantidade de batalhas
+Quantidade de marinheiros em cada batalha
+Quantidade de carnes disponíveis
+Regras da Simulação
+Luffy inicia a primeira batalha com 100 pontos de energia.
+A cada nova batalha, ele começa com 10 pontos de energia a menos que a batalha anterior.
+Para cada marinheiro derrotado, Luffy gasta 5 pontos de energia.
+Sempre que a energia for insuficiente, o Luffy pode comer uma carne e recuperar 100 pontos
+Condições
+Luffy vence a batalha se conseguir derrotar todos os marinheiros.
+Caso contrário, ele é derrotado.
+Uma nova batalha só pode começar se Luffy tiver energia inicial maior que 0 ou carnes para repor a energia.
+Saída
+Depois de todas as batalhas, exiba:
+
+Resultado (Vitória ou Derrota)
+Quantidade de carnes restantes
+Quantidade de marinheiros derrotados
+Energia restante ao final das batalhas
+Exemplo de Execução
+----------------------------------------
+EXEMPLO DE INPUT:
+Quantidade de batalhas: 4
+Quantidade de marinheiros: 10
+Quantidade de carnes: 2
+----------------------------------------
+EXEMPLO DE OUTPUT (SAÍDA):
+Resultado: Luffy saiu vitorioso!
+Quantidade de carnes restantes: 0
+Quantidade de marinheiros derrotados: 40
+Energia restante ao final das batalhas: 60
+-->
