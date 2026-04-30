@@ -6,13 +6,21 @@
     <title>Exercício 1</title>
 </head>
 <body>
-    <h1></h1>
+    <h1>Sorteador</h1>
+    <button onclick="sortear()">Sortear</button><br><br>
+    <div id="exibir"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    function sortear() {
+        let n = Math.random();
 
+        if (n > 0.5) {
+            exibir.innerHTML = `Eu arredondaria para 1`;
+        } else {
+            exibir.innerHTML = `Eu arredondaria para 0`;
+        }
     }
 </script>
 
