@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parâmetro e Retorno</title>
+</head>
+<body>
+    <input type="text" id="ipt_frase">
+    <button onclick="exibir()">Cumprimentar</button>
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    function montarFrase() {
+        let frase = ipt_frase.value;
+        console.log('Antes do return');
+        return `Frase: ${frase}`;
+        console.log('Após o return');
+    }
+
+    function exibir() {
+        msg.innerHTML = montarFrase();
+    }
+</script>

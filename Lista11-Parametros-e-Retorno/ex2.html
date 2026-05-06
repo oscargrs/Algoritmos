@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_text" placeholder="Digite...">
+    <button onclick="vogal()">Tem vogal???</button>
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    
+    function vogal() {
+        let text = ipt_text.value;
+        for (let i = 0; i < text.length; i++) {
+            letra = text[i];
+            if (
+                letra == 'a' ||
+                letra == 'e' ||
+                letra == 'i' ||
+                letra == 'o' ||
+                letra == 'u'
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+        exibir();
+    }
+
+    function exibir() {
+        msg.innerHTML = `${vogal()}`;
+    }
+</script>
+
+<!--
+1. Parte 1
+1) Crie uma função que receba um número e retorne true caso o número seja positivo e false caso contrário.
+2) Crie uma função que receba um texto e retorne true caso o texto contenha vogais (não vale usar includes!)
+3) Crie uma função que receba um texto e retorne todas as vogais do texto (como se removesse as consoantes).
+4) Crie uma função que receba um vetor de números e retorne a soma de todos os elementos do vetor.
+5) Crie uma função que receba um vetor de números e retorne o maior valor presente no vetor.
+6) Crie uma função que receba um vetor de números e retorne o menor valor presente no vetor.
+7) Crie uma função que receba um vetor de números e retorne a média dos valores.
+8) Crie uma função que receba um vetor de números e retorne um novo vetor contendo apenas os números pares do vetor original.
+9) Crie uma função que receba um vetor de números e retorne um novo vetor contendo apenas os números ímpares do vetor original.
+10) Crie uma função que receba um vetor de números e retorne a quantidade de elementos pares no vetor.
+11) Crie uma função que receba um vetor de números e retorne a quantidade de elementos ímpares no vetor.
+12) Crie uma função que receba um vetor de números e um valor, e retorne a quantidade de vezes que esse valor aparece no vetor.
+13) Crie uma função que receba um vetor de números e retorne true se todos os elementos do vetor forem positivos, ou false caso contrário.
+-->

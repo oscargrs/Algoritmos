@@ -6,13 +6,23 @@
     <title>Exercício 2</title>
 </head>
 <body>
-    <h1></h1>
+    <h1>Sortear Time</h1>
+
+    <button onclick="sortear()">Sortear Time</button>
+    <div id="exibir"></div>
 </body>
 </html>
 
 <script>
-    function  {
-
+    function sortear() {
+        let n = Math.random();
+        let min = 1;
+        let max = 4;
+        let intervalo = max - min; 
+        let formatado = n * intervalo + min;
+        let inteiro = formatado.toFixed();
+    
+        exibir.innerHTML = inteiro;
     }
 </script>
 
