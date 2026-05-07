@@ -50,7 +50,7 @@
             A quantidade de vezes que esse valor aparece no vetor é de: ${qtdValor(numeros, valor)}</b>
         <br><br>
         13) Crie uma função que receba um vetor de números e retorne true se todos os elementos do vetor forem positivos, ou false caso contrário. <br>
-            <b>Todos os números são positivos? ${poun(numeros)}</b>
+            <b>Todos os números são positivos? (considerando o número 0 como positivo) <br>${poun(numeros)}</b>
         `;
     }
 
@@ -116,7 +116,7 @@
 
 // 10) Crie uma função que receba um vetor de números e retorne a quantidade de elementos pares no vetor.
     function qtdPares(numeros) {
-        let pares = [];
+        let pares = 0;
         for (let i = 0; i < numeros.length; i++) {
             if (numeros[i] % 2 == 0) {
                 pares ++;
@@ -127,7 +127,7 @@
 
 // 11) Crie uma função que receba um vetor de números e retorne a quantidade de elementos ímpares no vetor.
     function  qtdImpares(numeros) {
-        let impares = [];
+        let impares = 0;
         for (let i = 0; i < numeros.length; i++) {
             if (numeros[i] % 2 != 0) {
                 impares ++;
