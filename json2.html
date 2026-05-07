@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+<!--
+    JSON - JavaScript Object Notation
+    Notação de Objetos JavaScript
+    NOtação - Simbologia ou representação de algo
+    Objeto - Forma de representar algo
+-->
+
+    <h3>Usuário 1</h3>
+    Nome: <input type="text" id="ipt_nome_1"> <br>
+    Email: <input type="text" id="ipt_email_1"> <br>
+
+    <h3>Usuário 2</h3>
+    Nome: <input type="text" id="ipt_nome_2"> <br>
+    Email: <input type="text" id="ipt_email_2"> <br>
+
+    <button onclick="exibir()">Exibir</button>
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    function exibir() {
+        let usuario1 = {
+            nome: ipt_nome_1.value,
+            email: ipt_email_1.value
+        }
+
+        let usuario2 = {
+            nome: ipt_nome_2.value,
+            email: ipt_email_2.value
+        }
+
+        msg.innerHTML = `
+        <h3>Informações do Usuário 1</h3>
+        Nome: ${usuario1.nome} <br>
+        Email: ${usuario1.email} <br><br>
+
+        <h3>Informações do Usuário 2</h3>
+        Nome: ${usuario2.nome} <br>
+        Email: ${usuario2.email}`;
+    }
+</script>

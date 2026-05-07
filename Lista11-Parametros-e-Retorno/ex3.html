@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+    <h1>Exercício 3</h1>
+
+    <input type="text" id="ipt_text">
+    <button onclick="exibir()">Ver vogais</button>
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    function exibir() {
+        let text = ipt_text.value;
+        msg.innerHTML = `${vogal(text)}`;
+    }
+
+    function vogal(texto) {
+        let vogais = [];
+        for (i = 0; i < texto.length; i++) {
+            let letra = texto[i];
+            if (
+                letra.toLowerCase() == 'a' ||
+                letra.toLowerCase() == 'e' ||
+                letra.toLowerCase() == 'i' ||
+                letra.toLowerCase() == 'o' ||
+                letra.toLowerCase() == 'u'
+            ) {
+                vogais.push(letra);
+            }
+        }
+
+        return vogais.toString().replaceAll(',', '');
+    }
+</script>
+
+<!--
+3) Crie uma função que receba um texto e retorne todas as vogais do texto (como se removesse as consoantes).
+-->
