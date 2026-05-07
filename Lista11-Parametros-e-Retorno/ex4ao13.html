@@ -50,7 +50,7 @@
             A quantidade de vezes que esse valor aparece no vetor é de: ${qtdValor(numeros, valor)}</b>
         <br><br>
         13) Crie uma função que receba um vetor de números e retorne true se todos os elementos do vetor forem positivos, ou false caso contrário. <br>
-            <b>Todos os números são positivos? (considerando o número 0 como positivo) <br>${poun(numeros)}</b>
+            <b>Todos os números são positivos? (OBS: o número 0 é considerado um número neutro, e não um número positivo) <br>${poun(numeros)}</b>
         `;
     }
 
@@ -151,7 +151,7 @@
     function poun(numeros) {
         let cont = 0;
         for (let i = 0; i < numeros.length; i++) {
-            if (numeros[i] >= 0) {
+            if (numeros[i] > 0) {
                 cont += 1;
             }
         }
