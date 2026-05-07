@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 10</title>
+    </head>
+    <body>
+        <h1>Jogo de dados</h1>
+
+        <button onclick="jogarDado1()">Dado Jogador 1</button>
+        <div id="exibir1"></div>
+        <br>
+
+        <button onclick="jogarDado2()">Dado Jogador 2</button>
+        <div id="exibir2"></div>
+        <br>
+
+        <button onclick="comparar()">Comparar Resultados</button>
+        <div id="exibirResultado"></div>
+    </body>
+</html>
+
+<script>
+    let dado1 = 0;
+    let dado2 = 0;
+
+    function jogarDado1() {
+        let n = Math.random();
+        n = n * 6 + 1;
+        n = Number(n.toFixed());
+        if (n > 6) {
+            n = 6;
+        }
+
+        dado1 = n;
+        exibir1.innerHTML = `${n}`;
+    }
+
+    function jogarDado2() {
+        let n = Math.random();
+        n = n * 6 + 1;
+        n = Number(n.toFixed());
+        if (n > 6) {
+            n = 6;
+        }
+
+        dado2 = n;
+        exibir2.innerHTML = `${n}`;
+    }
+
+    function comparar() {
+        if (exibir1.innerHTML == "" || exibir2.innerHTML == "") {
+            exibirResultado.innerHTML =
+                "Ambos os jogadores precisam jogar primeiro!";
+        } else if (dado1 > dado2) {
+            exibirResultado.innerHTML = "Jogador 1 venceu!";
+        } else if (dado2 > dado1) {
+            exibirResultado.innerHTML = "Jogador 2 venceu!";
+        } else {
+            exibirResultado.innerHTML = "Empate!";
+        }
+    }
+</script>
+
+<!--
+10. Jogo de dados
+a) Botão sorteia dado de 6 lados para Jogador 1.
+b) Botão sorteia dado de 6 lados para Jogador 2.
+c) "Comparar Resultados" exibe quem venceu ou empate.
+-->

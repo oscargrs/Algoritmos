@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 18</title>
+    </head>
+    <body>
+        <h1>Jogo de dados</h1>
+
+        <div id="placar">
+            Jogador 1: 0<br>
+            Jogador 2: 0<br>
+            Empate: 0
+        </div>
+        <br>
+
+        <button onclick="jogar()">Jogar</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    let p1 = 0;
+    let p2 = 0;
+    let empates = 0;
+
+    function jogar() {
+        let d1 = Math.random() * 6 + 0.5;
+        d1 = Number(d1.toFixed());
+
+        let d2 = Math.random() * 6 + 0.5;
+        d2 = Number(d2.toFixed());
+
+        let msg = "";
+
+        if (d1 > d2) {
+            p1++;
+            msg = "O jogador 1 está vencendo!";
+        } else if (d2 > d1) {
+            p2++;
+            msg = "O jogador 2 está vencendo!";
+        } else {
+            empates++;
+            msg = "O jogo está empatado!";
+        }
+
+        placar.innerHTML = `Jogador 1: ${p1}<br>Jogador 2: ${p2}<br>Empate: ${empates}`;
+        exibir.innerHTML = `Jogador 1 tirou ${d1} | Jogador 2 tirou ${d2}<br>${msg}`;
+    }
+</script>
+
+<!--
+18. Jogo de dados com placar
+a) Placar no topo.
+b) "Jogar" sorteia dado para cada jogador e atualiza placar.
+c) Exibe mensagem de quem está vencendo ou empate.
+-->

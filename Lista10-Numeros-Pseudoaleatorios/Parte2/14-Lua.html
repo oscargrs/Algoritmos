@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 14</title>
+    </head>
+    <body>
+        <h1>Fases da Lua</h1>
+
+        <button onclick="verLua()">Ver a Lua</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    function verLua() {
+        let dia = Math.random() * 31 + 0.5;
+        dia = Number(dia.toFixed());
+
+        let fase = "";
+
+        if (dia <= 7) {
+            fase = "🌑 Lua nova";
+        } else if (dia <= 16) {
+            fase = "🌕 Lua cheia";
+        } else if (dia <= 22) {
+            fase = "🌗 Lua minguante";
+        } else {
+            fase = "🌓 Lua crescente";
+        }
+
+        exibir.innerHTML = `Dia sorteado: ${dia}<br>${fase}`;
+    }
+</script>
+
+<!--
+14. Fases da lua
+a) Sorteia dia entre 1 e 31.
+b) Exibe fase da lua conforme o dia.
+-->

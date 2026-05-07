@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Sortear time</h1>
+
+    <button onclick="sortear()">Sortear time</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+
+<script>
+    function sortear() {
+        let img = '';
+        let n = Math.random();
+        n *= 4;
+        n = n.toFixed() - 1;
+
+        if (n == 1) {
+            img = '<img height="150px" src="https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png">';
+        } else if (n == 2) {
+            img = '<img height="150px" src="https://i.pinimg.com/736x/3e/ec/0f/3eec0fa2bae1d0d5f51c4bdbcb3c30ad.jpg">';
+        } else if (n == 3) {
+            img = '<img height="150px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/3840px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png">';
+        } else {
+            img = '<img height="150px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santos_logo.svg/1280px-Santos_logo.svg.png">';
+        }
+
+        exibir.innerHTML = `${img}`;
+    }
+</script>
+
+<!--
+2. Crie um programa o qual:  
+a) Ao clicar no botão "Sortear time", faz aparecer somente um dos escudos dos 
+4 times de futebol de maior torcida do estado de São Paulo. Independente da imagem, 
+todas devem ter 150px de altura.  
+-->

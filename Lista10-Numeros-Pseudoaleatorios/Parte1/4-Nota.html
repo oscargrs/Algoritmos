@@ -6,13 +6,21 @@
     <title>Exercício 4</title>
 </head>
 <body>
-    <h1></h1>
+    <h1>Sortear nota para aluno</h1>
+
+    <button onclick="sortear()">Sortear Nota para aluno</button>
+
+    <div id="exibir"></div>
 </body>
 </html>
 
 <script>
-    function  {
+    function sortear() {
+        let n = Math.random();
+        n = n * 10;
+        n = n.toFixed(1);
 
+        exibir.innerHTML = `${n}`;
     }
 </script>
 

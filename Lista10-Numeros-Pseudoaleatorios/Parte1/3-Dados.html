@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+
+    <style>
+        #exibir {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            border-radius: 5px;
+            font-size: larger;  
+            height: 100px;
+            width: 100px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogar dados</h1>
+
+    <button onclick="jogar()">Jogar dado</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+
+<script>
+    function jogar() {
+        let n = Math.random();
+        n =  n * 20 + 1;
+        n = n.toFixed();
+
+        exibir.innerHTML = `${n}`;
+    }
+</script>
+
+<!--
+3. Crie um programa o qual:  
+a) Tenha um botão "jogar dado";  
+
+b) Ao clicar nele, sorteie um dos 20 números de um dado D20 (Google) e 
+exiba o número sorteado em um quadrado com fundo preto, contendo a letra branca
+e o número centralizado dentro do quadrado (100px de largura e altura é suficiente); 
+-->

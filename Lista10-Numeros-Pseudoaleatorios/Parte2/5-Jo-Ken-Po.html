@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 5</title>
+    </head>
+    <body>
+        <h1>Jo Ken Po</h1>
+
+        <button onclick="jogar()">Jogar</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    let placar1 = 0;
+    let placar2 = 0;
+
+    let opcoes = ["pedra", "papel", "tesoura"];
+    let imagens = {
+        pedra: "https://png.pngtree.com/png-clipart/20241121/original/pngtree-rock-png-image_17274809.png",
+        papel: "https://png.pngtree.com/png-vector/20250512/ourmid/pngtree-rough-paper-texture-png-png-image_16177940.png",
+        tesoura:
+            "https://png.pngtree.com/png-vector/20240206/ourmid/pngtree-yellow-sewing-scissors-png-image_11667428.png",
+    };
+
+    function jogar() {
+        let i1 = Math.random() * 3 + 0.5;
+        i1 = Number(i1.toFixed()) - 1;
+
+        let i2 = Math.random() * 3 + 0.5;
+        i2 = Number(i2.toFixed()) - 1;
+
+        let j1 = opcoes[i1];
+        let j2 = opcoes[i2];
+
+        let resultado = "";
+
+        if (j1 == j2) {
+            resultado = "Empate!";
+        } else if (j1 == "pedra" && j2 == "tesoura") {
+            resultado = "O jogador 1 venceu!";
+            placar1++;
+        } else if (j1 == "papel" && j2 == "pedra") {
+            resultado = "O jogador 1 venceu!";
+            placar1++;
+        } else if (j1 == "tesoura" && j2 == "papel") {
+            resultado = "O jogador 1 venceu!";
+            placar1++;
+        } else {
+            resultado = "O jogador 2 venceu!";
+            placar2++;
+        }
+
+        exibir.innerHTML = `
+            <p>Jogador 1: <img height="200px" src="${imagens[j1]}"></p>
+            <p>Jogador 2: <img height="200px" src="${imagens[j2]}"></p>
+            <p>${resultado}</p>
+            <p>Jogador 1: ${placar1} vitória(s)</p>
+            <p>Jogador 2: ${placar2} vitória(s)</p>
+        `;
+    }
+</script>
+
+<!--
+5. Simulação jo ken po (pedra, papel e tesoura)
+a) Ao clicar no botão "Jogar", deve aparecer a figura de pedra, papel ou tesoura (200px de altura).
+b) Abaixo das imagens, exibir quem venceu e o placar de vitórias.
+-->

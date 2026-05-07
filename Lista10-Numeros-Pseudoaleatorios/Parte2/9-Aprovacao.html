@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 9</title>
+    </head>
+    <body>
+        <h1>Aprovação do aluno</h1>
+
+        <button onclick="gerarNota()">
+            Gerar uma nota de aluno entre 3 e 10
+        </button>
+        <div id="exibirNota"></div>
+        <br>
+
+        <button onclick="gerarFreq()">
+            Gerar uma frequência de aluno entre 50 e 100
+        </button>
+        <div id="exibirFreq"></div>
+        <br>
+
+        <button onclick="verAprovacao()">Ver Aprovação</button>
+        <div id="exibirSituacao"></div>
+    </body>
+</html>
+
+<script>
+    let nota = 0;
+    let freq = 0;
+
+    function gerarNota() {
+        nota = Math.random() * 7 + 3;
+        exibirNota.innerHTML = `${nota.toFixed(1)}`;
+    }
+
+    function gerarFreq() {
+        freq = Math.random() * 50 + 50;
+        exibirFreq.innerHTML = `${freq.toFixed(1)}`;
+    }
+
+    function verAprovacao() {
+        if (exibirNota.innerHTML == "" || exibirFreq.innerHTML == "") {
+            exibirSituacao.innerHTML = "Gere a nota e a frequência primeiro!";
+        } else {
+            let situacao = "";
+
+            if (nota >= 6 && freq >= 75) {
+                situacao = "aprovado";
+            } else {
+                situacao = "reprovado";
+            }
+
+            exibirSituacao.innerHTML = `Com nota ${nota.toFixed(1)} e frequência ${freq.toFixed(1)}, o aluno está ${situacao}!`;
+        }
+    }
+</script>
+
+<!--
+9. Aprovação
+a) Nota entre 3 e 10.
+b) Frequência entre 50 e 100.
+c) 1 casa decimal.
+d) "Ver Aprovação" exibe situação: aprovado se nota >= 6 e frequência >= 75%.
+-->

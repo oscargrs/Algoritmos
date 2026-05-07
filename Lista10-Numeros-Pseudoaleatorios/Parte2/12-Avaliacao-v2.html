@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 12</title>
+    </head>
+    <body>
+        <h1>Avaliação de atendente</h1>
+
+        <button onclick="avaliar()">Avaliar</button>
+        <button onclick="verMedia()">Verificar Média</button>
+
+        <div id="exibir"></div>
+        <div id="exibirMedia"></div>
+    </body>
+</html>
+
+<script>
+    let totalNotas = 0;
+    let qtdAvaliacoes = 0;
+
+    function avaliar() {
+        let n = Math.random() * 5;
+        n = Number(n.toFixed(1));
+
+        totalNotas = totalNotas + n;
+        qtdAvaliacoes++;
+
+        let emoji = "";
+        if (n <= 0.5) {
+            emoji = "😢 Muito Triste";
+        } else if (n <= 1.5) {
+            emoji = "🙁 Meio Triste";
+        } else if (n <= 3.5) {
+            emoji = "😐 Neutro";
+        } else if (n <= 4.5) {
+            emoji = "😊 Feliz";
+        } else {
+            emoji = "😄 Muito Feliz";
+        }
+
+        exibir.innerHTML = `Nota recebida: ${n}<br>${emoji}`;
+        exibirMedia.innerHTML = "";
+    }
+
+    function verMedia() {
+        if (qtdAvaliacoes == 0) {
+            exibirMedia.innerHTML = "Nenhuma avaliação realizada ainda!";
+        } else {
+            let media = totalNotas / qtdAvaliacoes;
+            media = Number(media.toFixed(1));
+
+            let emoji = "";
+            if (media <= 0.5) {
+                emoji = "😢 Muito Triste";
+            } else if (media <= 1.5) {
+                emoji = "🙁 Meio Triste";
+            } else if (media <= 3.5) {
+                emoji = "😐 Neutro";
+            } else if (media <= 4.5) {
+                emoji = "😊 Feliz";
+            } else {
+                emoji = "😄 Muito Feliz";
+            }
+
+            exibirMedia.innerHTML = `Média geral: ${media}<br>${emoji}`;
+        }
+    }
+</script>
+
+<!--
+12. Avaliação com média
+a) "Verificar Média" exibe a média de todas as avaliações realizadas.
+b) Mostra emoji de acordo com a média.
+-->

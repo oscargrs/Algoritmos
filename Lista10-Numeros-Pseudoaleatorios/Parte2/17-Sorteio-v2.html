@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 17</title>
+    </head>
+    <body>
+        <h1>Sorteio da sorte</h1>
+
+        Nome:
+        <input type="text" id="inputNome"><br><br>
+        Número da sorte 1 (1 a 100):
+        <input type="number" id="inputN1"><br><br>
+        Número da sorte 2 (1 a 100):
+        <input type="number" id="inputN2"><br><br>
+        Número da sorte 3 (1 a 100):
+        <input type="number" id="inputN3"><br><br>
+
+        <button onclick="sortear()">Sortear</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    function sortear() {
+        let nome = inputNome.value;
+        let n1 = Number(inputN1.value);
+        let n2 = Number(inputN2.value);
+        let n3 = Number(inputN3.value);
+
+        let valido = true;
+
+        if (n1 < 1 || n1 > 100) {
+            valido = false;
+        }
+        if (n2 < 1 || n2 > 100) {
+            valido = false;
+        }
+        if (n3 < 1 || n3 > 100) {
+            valido = false;
+        }
+
+        if (valido == false) {
+            alert("Todos os números devem estar entre 1 e 100!");
+        } else {
+            let sorteado = 0;
+            let tentativas = 0;
+            let numeroSorteado = 0;
+
+            while (sorteado == 0) {
+                let n = Math.random() * 100 + 0.5;
+                n = Number(n.toFixed());
+                tentativas++;
+
+                if (n == n1 || n == n2 || n == n3) {
+                    sorteado = 1;
+                    numeroSorteado = n;
+                }
+            }
+
+            exibir.innerHTML = `Parabéns, ${nome} o seu número da sorte ${numeroSorteado} foi sorteado após ${tentativas} sorteios!`;
+        }
+    }
+</script>
+
+<!--
+17. Sorteio com até 3 números da sorte entre 1 e 100.
+Exibe qual número da sorte foi sorteado e após quantos sorteios.
+-->

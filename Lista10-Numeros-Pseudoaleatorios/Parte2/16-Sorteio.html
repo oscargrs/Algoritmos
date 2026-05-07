@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 16</title>
+    </head>
+    <body>
+        <h1>Sorteio da sorte</h1>
+
+        Nome:
+        <input type="text" id="inputNome"><br><br>
+        Número da sorte (1 a 10):
+        <input type="number" id="inputNumero"><br><br>
+
+        <button onclick="sortear()">Sortear</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    function sortear() {
+        let nome = inputNome.value;
+        let numeroDaSorte = Number(inputNumero.value);
+
+        if (numeroDaSorte < 1 || numeroDaSorte > 10) {
+            alert("Digite um número entre 1 e 10!");
+        } else {
+            let sorteado = 0;
+            let tentativas = 0;
+
+            while (sorteado != numeroDaSorte) {
+                sorteado = Math.random() * 10 + 0.5;
+                sorteado = Number(sorteado.toFixed());
+                tentativas++;
+            }
+
+            exibir.innerHTML = `Parabéns, ${nome} você foi sorteado(a) após ${tentativas} sorteios!`;
+        }
+    }
+</script>
+
+<!--
+16. Sorteio com número da sorte
+a) Usuário digita nome e número da sorte entre 1 e 10.
+b) Valida o número. Sorteia até acertar.
+c) Exibe mensagem com nome e quantidade de sorteios.
+-->

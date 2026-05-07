@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 8</title>
+    </head>
+    <body>
+        <h1>Situação do aluno</h1>
+
+        <button onclick="gerarNota()">
+            Gerar uma nota de aluno entre 0 e 10
+        </button>
+        <div id="exibirNota"></div>
+        <br>
+
+        <button onclick="gerarFreq()">
+            Gerar uma frequência de aluno entre 0 e 100
+        </button>
+        <div id="exibirFreq"></div>
+        <br>
+
+        <button onclick="verSituacao()">Ver Situação</button>
+    </body>
+</html>
+
+<script>
+    let nota = 0;
+    let freq = 0;
+
+    function gerarNota() {
+        nota = Math.random() * 10;
+        exibirNota.innerHTML = `${nota.toFixed(2)}`;
+    }
+
+    function gerarFreq() {
+        freq = Math.random() * 100;
+        exibirFreq.innerHTML = `${freq.toFixed(2)}`;
+    }
+
+    function verSituacao() {
+        alert(`Nota: ${nota.toFixed(2)} | Frequência: ${freq.toFixed(2)}%`);
+    }
+</script>
+
+<!--
+8. Nota e frequência
+a) Botão gera nota entre 0 e 10.
+b) Botão gera frequência entre 0 e 100.
+c) Valores com 2 casas decimais.
+d) Botão "Ver Situação" emite alert com nota e frequência.
+-->

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 11</title>
+    </head>
+    <body>
+        <h1>Avaliação de atendente</h1>
+
+        <button onclick="avaliar()">Avaliar</button>
+
+        <div id="exibir"></div>
+    </body>
+</html>
+
+<script>
+    function avaliar() {
+        let n = Math.random() * 5;
+        n = Number(n.toFixed(1));
+
+        let emoji = "";
+
+        if (n <= 0.5) {
+            emoji = "😢 Muito Triste";
+        } else if (n <= 1.5) {
+            emoji = "🙁 Meio Triste";
+        } else if (n <= 3.5) {
+            emoji = "😐 Neutro";
+        } else if (n <= 4.5) {
+            emoji = "😊 Feliz";
+        } else {
+            emoji = "😄 Muito Feliz";
+        }
+
+        exibir.innerHTML = `Nota recebida: ${n}<br>${emoji}`;
+    }
+</script>
+
+<!--
+11. Avaliação de atendente
+a) Botão "Avaliar" gera nota entre 0 e 5 (1 casa decimal).
+b) Exibe a nota recebida.
+c) Exibe emoji conforme faixa da nota.
+-->
