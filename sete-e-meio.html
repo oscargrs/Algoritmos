@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Sete e Meio</title>
+</head>
+<body>
+    <h1>Jogo de Baralho - Sete e Meio</h1>
+    <h3 id="placar"></h3>
+
+    <div id="buttons">
+        <button onclick="start()">Jogar Sete e Meio</button>
+    </div>
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    let naipes = ["Copas", "Espadas", "Ouros", "Paus"];
+    let cartas = ["Ás", 2, 3, 4, 5, 6, 7, "Valete", "Rainha", "Rei"];
+    let valor = [1, 2, 3, 4, 5, 6, 7, 0.5, 0.5, 0.5];
+    let pontuacao = 0;
+    let banca = 0;
+    let placarJ = 0;
+    let placarB = 0;
+    
+    function start() {
+        pontuacao = 0;
+        banca = 0;
+        buttons.innerHTML = `<button onclick="pedir()">Pedir Outra Carta</button>
+                             <button onclick="passar()">Passar Vez</button>`;
+
+        display.innerHTML = ``;
+        
+        sortear();
+    }
+
+    function sortear() {
+        let naipe = Math.floor(Math.random() * 4);
+        let carta = Math.floor(Math.random() * 10);
+
+        pontuacao += valor[carta];
+
+        display.innerHTML = `
+            Jogador:
+            <br><br>
+            (${pontuacao} pontos) - ${cartas[carta]} de ${naipes[naipe]}`;
+    }
+
+    function pedir() {
+        let naipe = Math.floor(Math.random() * 4);
+        let carta = Math.floor(Math.random() * 10);
+
+        pontuacao += valor[carta];
+
+        display.innerHTML += `<br><br>
+            Quero mais uma carta!
+            <br><br>
+            (${pontuacao} pontos) - ${cartas[carta]} de ${naipes[naipe]}`;
+
+        final();
+    }
+
+    function passar() {
+        let naipe = Math.floor(Math.random() * 4);
+        let carta = Math.floor(Math.random() * 10);
+        
+        banca += valor[carta];
+        
+        display.innerHTML += `<br><br>
+        Banca:
+        <br><br>
+        (${banca} pontos) - ${cartas[carta]} de ${naipes[naipe]}`;
+        
+        while (banca < pontuacao) {
+            let naipe = Math.floor(Math.random() * 4);
+            let carta = Math.floor(Math.random() * 10);
+            
+            banca += valor[carta];
+            
+            display.innerHTML += `<br><br>
+            É necessário virar outra carta para a banca!
+            <br><br>
+            (${banca} pontos) - ${cartas[carta]} de ${naipes[naipe]}`;
+        }
+
+        final();
+    }
+
+    function final() {
+        if (pontuacao == 7.5) {
+            buttons.innerHTML = ``;
+            display.innerHTML += `<br><br>SETE E MEIO! O jogador venceu com 7.5 pontos!
+                                  <br><br>
+                                  <button onclick="start()">Jogar Novamente</button>`;
+            pontuacao = 0;
+            banca = 0;
+            placarJ ++;
+        } else if (pontuacao > 7.5) {
+            buttons.innerHTML = ``;
+            display.innerHTML += `<br><br>O JOGADOR ESTOUROU! A banca venceu com ${banca} pontos
+                                  <br><br>
+                                  <button onclick="start()">Jogar Novamente</button>`;
+            pontuacao = 0;
+            banca = 0;
+            placarB ++;
+        } else if (banca == 7.5) {
+            buttons.innerHTML = ``;
+            display.innerHTML += `<br><br>SETE E MEIO! A banca venceu com 7.5 pontos!
+                                  <br><br>
+                                  <button onclick="start()">Jogar Novamente</button>`;
+            pontuacao = 0;
+            banca = 0;
+            placarB ++;
+        } else if (banca > 7.5) {
+            buttons.innerHTML = ``;
+            display.innerHTML += `<br><br>A BANCA ESTOUROU! O jogador venceu com ${pontuacao} pontos!
+                                  <br><br>
+                                  <button onclick="start()">Jogar Novamente</button>`;
+            pontuacao = 0;
+            banca = 0;
+            placarJ ++;
+        } else if (banca > pontuacao) {
+            buttons.innerHTML = ``;
+            display.innerHTML += `<br><br>A banca venceu com ${banca} pontos!
+                                  <br><br>
+                                  <button onclick="start()">Jogar Novamente</button>`;
+            pontuacao = 0;
+            banca = 0;
+            placarB ++;
+        } else {
+            return;
+        }
+
+        placar.innerHTML = `Placar: Jogador ${placarJ} | ${placarB} Banca`
+    }
+</script>
