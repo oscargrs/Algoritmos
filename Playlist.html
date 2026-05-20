@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Playlist Musical</title>
+</head>
+<body>
+    <h1>Desafio: Gerenciador de Playlist Musical</h1>
+
+    Adicionar Música: <br>
+    <input type="text" id="ipt_titulo" placeholder="Título"><br>
+    <input type="text" id="ipt_banda" placeholder="Banda"><br>
+    <input type="text" id="ipt_duracao" placeholder="Duração"><br>
+    <input type="text" id="ipt_anoLancamento" placeholder="Ano de Lançamento"><br>
+    <input type="text" id="ipt_avaliacoes" placeholder="Avaliações separadas por vírgula, ex: 1,2,3,4,5"><br>
+    <input type="text" id="ipt_integrantes" placeholder="Integrantes separados por vírgula, ex: Róger,Roberto,Cláudia,Fernanda"><br>
+
+    <button onclick="adicionarMusica()">Adicionar Música</button><br><br>
+    <br>
+    <button onclick="listarMusicas()">Listar Músicas</button><br><br>
+    <br>
+    <button onclick="removerMusica()">Remover pelo Título</button>    
+    <br>
+    <button onclick="atualizarAnoLancamento()">Atualizar o Ano de Lançamento</button>
+    <br>
+    <button onclick="mediaAvaliacoes()">Calcular a média das Avaliações</button>
+    <br>
+    <button onclick="buscarBandaPorIntegrante()">Buscar Banda por Integrante</button>
+
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    let playlist = [
+        {
+            "titulo": "Vai corinthians",
+            "banda": "gaviões",
+            "duracao": "2 horas",
+            "anoLanc": "1910",
+            "avaliacoes": [1,2,3,4,5],
+            "integrantes": ["sport","club","corinthians","paulista"]
+        }
+    ];
+    let mensagem = ``;
+
+    function adicionarMusica() {
+        let musica = {
+            "titulo": ipt_titulo.value,
+            "banda": ipt_banda.value,
+            "duracao": ipt_duracao.value,
+            "anoLanc": ipt_anoLancamento.value,
+            "avaliacoes": ipt_avaliacoes.value.split(','),
+            "integrantes": ipt_integrantes.value.split(',')
+        }
+
+        playlist.push(musica);
+
+        ipt_titulo.value = '';
+        ipt_banda.value = '';
+        ipt_duracao.value = '';
+        ipt_anoLancamento.value = '';
+        ipt_avaliacoes.value = '';
+        ipt_integrantes.value = '';
+    }
+    
+    function listarMusicas() {
+        mensagem = '';
+        for (let i = 0; i < playlist.length; i++) {
+            mensagem += `
+                <br>${playlist[i].titulo}
+                - ${playlist[i].banda}
+                - ${playlist[i].anoLanc}`;
+        }
+
+        display.innerHTML = `Músicas:${mensagem}`;
+    }
+
+    function removerMusica() {
+        for (let i = 0; i < playlist.length; i++) {
+            if (playlist[i].titulo == ipt_titulo.value) {
+                playlist.splice(i, 1);
+            }
+        }
+
+        listarMusicas();
+    }
+
+    function atualizarAnoLancamento() {
+        for (let i = 0; i < playlist.length; i++) {
+            if (playlist[i].titulo == ipt_titulo.value) {
+                playlist[i].anoLanc = ipt_anoLancamento.value;
+            }
+        }
+
+        listarMusicas();
+    }
+
+    function mediaAvaliacoes() {
+        let soma = 0;
+        let media = 0;
+
+        for (let i = 0; i < playlist.length; i++) {
+            if (playlist[i].titulo == ipt_titulo.value) {
+                for (let y = 0; y < playlist[i].avaliacoes.length; y++) {
+                    soma += Number(playlist[i].avaliacoes[y]);
+                }
+
+                media = soma / playlist[i].avaliacoes.length;
+            }
+        }
+
+        display.innerHTML = `A média de avaliações de ${ipt_titulo.value} é de ${media}`;
+    }
+
+    function buscarBandaPorIntegrante() {
+        for (let i = 0; i < playlist.length; i++) {
+            for (let y = 0; y < playlist[i].integrantes.length; y++) {
+                if (playlist[i].integrantes[y] == ipt_integrantes.value) {
+                    display.innerHTML = `A banda que contém estes integrantes é: ${playlist[i].banda}`;
+                    break;
+                } 
+            }
+        }
+    }
+</script>
+
+<!--
+🎵 Desafio: Gerenciador de Playlist Musical
+Você foi contratado para desenvolver um sistema de gerenciamento de uma playlist de músicas, que será usado por um aplicativo de streaming. O sistema deve permitir a adição, atualização e consulta de músicas, com foco em avaliações e nos integrantes da banda.
+
+Cada música deve conter as seguintes características:
+
+titulo: o nome da música
+banda: o nome da banda
+duracao: duração da música em minutos
+anoLancamento: o ano de lançamento da música
+avaliacoes: lista de avaliações da música, de 1 a 5
+integrantes: nomes dos integrantes da banda
+📋 Funcionalidades obrigatórias:
+Adicionar uma nova música à playlist (adicionarMusica)
+Listar todas as músicas (listarMusicas)
+Remover uma música pelo título (removerMusica)
+Atualizar o ano de lançamento de uma música pelo título (atualizarAnoLancamento)
+Calcular a média das avaliações de uma música (mediaAvaliacoes)
+Descobrir em qual banda está determinado integrante (buscarBandaPorIntegrante)
+⭐ Dicas: 
+Para adicionar os integrantes da banda, você pode pedir para o usuário digitar os valores separados por virgula, por exemplo: "Bob, Tom, Mel, Dan";
+
+Para inserir os elementos em um vetor, você pode usar a função split() como  no exemplo abaixo:
+
+const nomesDigitados = "Bob, Tom, Mel, Dan";
+const integrantes = nomesDigitados.split(",");
+
+Para retirar os espaços em branco, você pode utilizar a função trim() como no exemplo abaixo:
+
+for (let i = 0; i < integrantes.length; i++) {
+    integrantes[i] = integrantes[i].trim();
+}
+
+Obs.: Use a mesma lógica para cadastrar as avaliações.
+-->
