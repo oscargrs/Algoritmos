@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h1>Registro de Despesas Mensais</h1>
+
+    Nome da despesa:
+    <input type="text" id="ipt_nome">
+
+    Valor:
+    <input type="number" id="ipt_valor">
+
+    <button onclick="cadastrar()">Cadastrar Despesa</button>
+    <button onclick="resumo()">Resumo das Despesas</button>
+
+    <br><br>
+
+    <select id="sel_filtro">
+        <option value="acima">Acima de</option>
+        <option value="abaixo">Abaixo de</option>
+    </select>
+
+    Valor:
+    <input type="number" id="ipt_filtroValor">
+
+    <button onclick="filtrar()">Filtrar Despesas</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let valores = [];
+
+    function cadastrar() {
+        let nome = ipt_nome.value;
+        let valor = Number(ipt_valor.value);
+
+        if (valor > 0) {
+            nomes[nomes.length] = nome;
+            valores[valores.length] = valor;
+            ipt_nome.value = '';
+            ipt_valor.value = '';
+            msg.innerHTML = `Despesa cadastrada com sucesso!`;
+        } else {
+            msg.innerHTML = `O valor deve ser positivo.`;
+        }
+    }
+
+    function resumo() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhuma despesa cadastrada.`;
+            return;
+        }
+
+        let total = 0;
+        let lista = `Você tem ${nomes.length} despesas cadastradas:<br><br>`;
+
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${nomes[i]} - R$ ${Number(valores[i]).toFixed(2)}<br>`;
+            total += valores[i];
+            i++;
+        }
+
+        lista += `<br>Total gasto: R$ ${total.toFixed(2)}`;
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let valorFiltro = Number(ipt_filtroValor.value);
+        let opcao = sel_filtro.value;
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (opcao == 'acima' && valores[i] > valorFiltro) {
+                lista += `${nomes[i]} - R$ ${Number(valores[i]).toFixed(2)}<br>`;
+            }
+            if (opcao == 'abaixo' && valores[i] < valorFiltro) {
+                lista += `${nomes[i]} - R$ ${Number(valores[i]).toFixed(2)}<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhuma despesa encontrada com esse filtro.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+8. Registro de Despesas Mensais
+Crie um programa o qual:
+
+a) O usuário informe o nome da despesa e o valor gasto;
+b) Ao clicar em "Cadastrar Despesa", caso o valor seja positivo, registre as informações; caso contrário, exiba uma mensagem de erro;
+c) Ao clicar em "Resumo das Despesas", mostre a lista das despesas cadastradas e o total gasto no mês, como no exemplo:
+
+Você tem AAA despesas cadastradas:
+
+BBB - R$ CCC
+BBB - R$ CCC
+
+Total gasto: R$ DDD
+
+d) Tenha um campo para informar um valor;
+e) Ao clicar em "Filtrar Despesas", exiba apenas as despesas acima ou abaixo do valor informado.
+-->

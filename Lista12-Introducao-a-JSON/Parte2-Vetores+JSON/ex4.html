@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <h1>Registro de Alimentos</h1>
+
+    Nome do alimento:
+    <input type="text" id="ipt_nome">
+
+    Quantidade:
+    <input type="number" id="ipt_qtd">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizarLista()">Atualizar Lista</button>
+
+    <br><br>
+
+    <select id="sel_filtro">
+        <option value="maior">Maior que</option>
+        <option value="menor">Menor que</option>
+    </select>
+
+    Quantidade:
+    <input type="number" id="ipt_filtroQtd">
+
+    <button onclick="filtrar()">Filtrar Alimentos</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let quantidades = [];
+
+    function cadastrar() {
+        let nome = ipt_nome.value;
+        let qtd = Number(ipt_qtd.value);
+
+        if (nome.length >= 3 && qtd > 0) {
+            nomes[nomes.length] = nome;
+            quantidades[quantidades.length] = qtd;
+            ipt_nome.value = '';
+            ipt_qtd.value = '';
+            msg.innerHTML = `Alimento cadastrado com sucesso!`;
+        } else {
+            msg.innerHTML = `O nome deve ter ao menos 3 letras e a quantidade deve ser maior que zero.`;
+        }
+    }
+
+    function atualizarLista() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum alimento cadastrado.`;
+            return;
+        }
+
+        let lista = `Você tem ${nomes.length} alimentos cadastrados:<br><br>`;
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${nomes[i]} - ${quantidades[i]} unidades<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let qtdFiltro = Number(ipt_filtroQtd.value);
+        let opcao = sel_filtro.value;
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (opcao == 'maior' && quantidades[i] > qtdFiltro) {
+                lista += `${nomes[i]} - ${quantidades[i]} unidades<br>`;
+            }
+            if (opcao == 'menor' && quantidades[i] < qtdFiltro) {
+                lista += `${nomes[i]} - ${quantidades[i]} unidades<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhum alimento encontrado com esse filtro.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+4. Registro de Alimentos
+Crie um programa o qual:
+
+a) O usuário informe o nome e a quantidade de um alimento;
+b) Ao clicar em "Cadastrar", caso o nome contenha ao menos 3 letras e a quantidade seja maior que zero, registre as informações e exiba uma mensagem de sucesso; caso contrário, exiba uma mensagem explicativa;
+c) Ao clicar em "Atualizar Lista", deve aparecer a relação dos alimentos cadastrados e um texto como este abaixo:
+
+Você tem AAA alimentos cadastrados:
+
+BBB - CCC unidades
+BBB - CCC unidades
+
+d) Tenha um campo para informar uma quantidade;
+e) Ao clicar em "Filtrar Alimentos", deve exibir somente os alimentos que tenham quantidade maior ou menor do que o valor informado, de acordo com a opção escolhida.
+-->

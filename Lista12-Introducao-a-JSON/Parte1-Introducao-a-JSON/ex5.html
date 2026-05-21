@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h1>Cadastro de Alunos com Situação Escolar</h1>
+
+    Nome do aluno:
+    <input type="text" id="ipt_aluno">
+
+    Nota:
+    <input type="number" id="ipt_nota">
+
+    Frequência:
+    <input type="number" id="ipt_freq">
+
+    <button onclick="analisar()">Analisar Aluno</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+        let aluno = {
+            aluno: ipt_aluno.value,
+            nota: Number(ipt_nota.value),
+            frequencia: Number(ipt_freq.value)
+        }
+
+        aluno.situacao = "Reprovado";
+        if (aluno.nota >= 6 && aluno.frequencia >= 75) {
+            aluno.situacao = "Aprovado";
+        }
+
+        msg.innerHTML = `
+            Aluno: ${aluno.aluno}<br>
+            Nota: ${aluno.nota}<br>
+            Frequência: ${aluno.frequencia}%<br>
+            Situação: ${aluno.situacao}`;
+    }
+</script>
+
+<!--
+5. Cadastro de Alunos com Situação Escolar
+Crie um programa o qual:
+
+a) O usuário informe:
+
+nome do aluno;
+nota;
+frequência;
+b) Ao clicar em "Analisar Aluno", crie um objeto JSON chamado aluno;
+
+c) O objeto deverá possuir um atributo chamado situacao;
+
+d) Regras:
+
+nota maior ou igual a 6 e frequência maior ou igual a 75 → "Aprovado"
+caso contrário → "Reprovado"
+e) Exiba:
+
+Aluno: Fernanda
+Nota: 8
+Frequência: 90%
+Situação: Aprovado
+-->

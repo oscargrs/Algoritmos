@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    <h1>Cadastro de Animais de Estimação</h1>
+
+    Nome do animal:
+    <input type="text" id="ipt_nome">
+
+    Espécie:
+    <input type="text" id="ipt_especie">
+
+    <button onclick="cadastrar()">Cadastrar Animal</button>
+    <button onclick="listar()">Listar Animais</button>
+
+    <br><br>
+
+    Espécie:
+    <input type="text" id="ipt_filtroEspecie">
+
+    <button onclick="filtrar()">Filtrar Animais</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let especies = [];
+
+    function cadastrar() {
+        nomes[nomes.length] = ipt_nome.value;
+        especies[especies.length] = ipt_especie.value;
+        ipt_nome.value = '';
+        ipt_especie.value = '';
+        msg.innerHTML = `Animal cadastrado com sucesso!`;
+    }
+
+    function listar() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum animal cadastrado.`;
+            return;
+        }
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${i + 1}. ${nomes[i]} - ${especies[i]}<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let especieFiltro = ipt_filtroEspecie.value.toLowerCase();
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (especies[i].toLowerCase() == especieFiltro) {
+                lista += `${i + 1}. ${nomes[i]} - ${especies[i]}<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhum animal encontrado com essa espécie.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+10. Cadastro de Animais de Estimação
+Crie um programa o qual:
+
+a) O usuário informe o nome do animal e a espécie;
+b) Ao clicar em "Cadastrar Animal", os dados devem ser guardados;
+c) Ao clicar em "Listar Animais", os animais cadastrados devem ser exibidos um abaixo do outro;
+d) Tenha um campo para informar a espécie;
+e) Ao clicar em "Filtrar Animais", mostre apenas os animais da espécie informada.
+-->

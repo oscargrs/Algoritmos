@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+    <h1>Catálogo de Jogos</h1>
+
+    Nome do jogo:
+    <input type="text" id="ipt_jogo">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="msg_contador"></div>
+
+    <br>
+
+    <button onclick="listar()">Listar Jogos</button>
+
+    <br><br>
+
+    De: <input type="number" id="ipt_de">
+    Até: <input type="number" id="ipt_ate">
+
+    <button onclick="filtrar()">Filtrar Jogos</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let jogos = [];
+
+    function cadastrar() {
+        let nome = ipt_jogo.value;
+        jogos[jogos.length] = nome;
+        ipt_jogo.value = '';
+        msg_contador.innerHTML = `Você já cadastrou ${jogos.length} jogos`;
+    }
+
+    function listar() {
+        if (jogos.length == 0) {
+            msg.innerHTML = `Nenhum jogo cadastrado.`;
+            return;
+        }
+
+        let lista = '';
+        let i = jogos.length - 1;
+        while (i >= 0) {
+            lista += `${i + 1}. ${jogos[i]}<br>`;
+            i--;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let de = Number(ipt_de.value);
+        let ate = Number(ipt_ate.value);
+
+        if (de < 1 || ate > jogos.length || de > ate) {
+            msg.innerHTML = `Intervalo inválido.`;
+            return;
+        }
+
+        let lista = '';
+        let i = ate - 1;
+        while (i >= de - 1) {
+            lista += `${i + 1}. ${jogos[i]}<br>`;
+            i--;
+        }
+        msg.innerHTML = lista;
+    }
+</script>
+
+<!--
+3. Catálogo de Jogos
+Crie um programa o qual:
+
+a) O usuário informe o nome de cada jogo que já jogou e clique em "Cadastrar";
+b) Na medida em que vai cadastrando, exiba abaixo do botão: "Você já cadastrou X jogos";
+c) Tenha um botão "Listar Jogos", que quando clicado, mostra os jogos cadastrados um abaixo do outro, em ordem inversa ao que foi cadastrado;
+d) Receba um intervalo crescente de dois números, que servem para filtrar a ordem dos jogos de acordo com o mínimo e máximo inserido;
+e) Ao clicar em "Filtrar Jogos", deve exibir os jogos em ordem inversa, porém filtrando de acordo com o mínimo e máximo solicitado pelo usuário.
+
+OBS: se o usuário solicitar "filtrar do jogo 3 ao 7", deve exibir em ordem inversa começando do item 7 até o 3.
+-->

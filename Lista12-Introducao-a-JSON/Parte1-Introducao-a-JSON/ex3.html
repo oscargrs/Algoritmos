@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+    <h1>Cadastro de Produtos com Atualização de Estoque</h1>
+
+    Nome de produto:
+    <input type="text" id="ipt_produto">
+
+    Quantidade em estoque:
+    <input type="number" id="ipt_qtdEstoque">
+
+    Preço:
+    <input type="number" id="ipt_preco">
+
+    <button onclick="cadastrar()">Cadastrar Produto</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        let produto = {
+            nome: ipt_produto.value,
+            qtdEstoque: Number(ipt_qtdEstoque.value),
+            preco: Number(ipt_preco.value)
+        };
+
+        produto.qtdEstoque += 10;
+        produto.valorTotal = produto.qtdEstoque * produto.preco;
+
+        msg.innerHTML = `
+            Produto: ${produto.nome} <br>
+            Quantidade Atualizada: ${produto.qtdEstoque} <br>
+            Preço Unitário: R$${produto.preco} <br>
+            Valor Total: R$${produto.valorTotal}`;
+    }
+</script>
+
+<!--
+3. Cadastro de Produtos com Atualização de Estoque
+Crie um programa o qual:
+
+a) O usuário informe:
+
+nome do produto;
+quantidade em estoque;
+preço;
+b) Ao clicar em "Cadastrar Produto", crie um objeto JSON chamado produto;
+
+c) Depois do cadastro:
+
+aumente a quantidade em estoque em 10 unidades;
+crie um atributo chamado valorTotal;
+o valor total será quantidade × preço;
+d) Exiba:
+
+Produto: Teclado
+Quantidade Atualizada: 15
+Preço Unitário: R$100
+Valor Total: R$1500
+-->

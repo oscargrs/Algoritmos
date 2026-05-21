@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6</title>
+</head>
+<body>
+    <h1>Controle de Contatos</h1>
+
+    Nome:
+    <input type="text" id="ipt_nome">
+
+    Telefone:
+    <input type="text" id="ipt_telefone">
+
+    <button onclick="cadastrar()">Cadastrar Contato</button>
+    <button onclick="exibir()">Exibir Contatos</button>
+
+    <br><br>
+
+    De: <input type="number" id="ipt_de">
+    Até: <input type="number" id="ipt_ate">
+
+    <button onclick="filtrar()">Filtrar Contatos</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let telefones = [];
+
+    function cadastrar() {
+        nomes[nomes.length] = ipt_nome.value;
+        telefones[telefones.length] = ipt_telefone.value;
+        ipt_nome.value = '';
+        ipt_telefone.value = '';
+        msg.innerHTML = `Contato cadastrado com sucesso!`;
+    }
+
+    function exibir() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum contato cadastrado.`;
+            return;
+        }
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${i + 1}. ${nomes[i]} - ${telefones[i]}<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let de = Number(ipt_de.value);
+        let ate = Number(ipt_ate.value);
+
+        if (de < 1 || ate > nomes.length || de > ate) {
+            msg.innerHTML = `Intervalo inválido.`;
+            return;
+        }
+
+        let lista = '';
+        let i = de - 1;
+        while (i < ate) {
+            lista += `${i + 1}. ${nomes[i]} - ${telefones[i]}<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+</script>
+
+<!--
+6. Controle de Contatos
+Crie um programa o qual:
+
+a) O usuário informe o nome e o telefone de um contato;
+b) Ao clicar em "Cadastrar Contato", os dados devem ser armazenados;
+c) Ao clicar em "Exibir Contatos", os contatos cadastrados devem aparecer um abaixo do outro, com nome e telefone;
+d) Tenha dois campos para informar um intervalo de posições;
+e) Ao clicar em "Filtrar Contatos", devem ser exibidos apenas os contatos que estiverem dentro do intervalo solicitado.
+
+OBS: se o usuário informar "de 1 até 4", devem aparecer do primeiro ao quarto contato da lista.
+-->

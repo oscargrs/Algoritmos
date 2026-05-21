@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Registro de Produtos</h1>
+
+    Nome do produto:
+    <input type="text" id="ipt_nome">
+
+    Preço:
+    <input type="number" id="ipt_preco">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizarEstoque()">Atualizar Estoque</button>
+
+    <br><br>
+
+    <select id="sel_filtro">
+        <option value="acima">Preços acima de</option>
+        <option value="abaixo">Preços abaixo de</option>
+    </select>
+
+    Valor:
+    <input type="number" id="ipt_valor">
+
+    <button onclick="filtrar()">Filtrar Produtos</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let precos = [];
+
+    function cadastrar() {
+        let nome = ipt_nome.value;
+        let preco = Number(ipt_preco.value);
+
+        if (preco > 0 && nome.length >= 3) {
+            nomes[nomes.length] = nome;
+            precos[precos.length] = preco;
+            ipt_nome.value = '';
+            ipt_preco.value = '';
+            msg.innerHTML = `Produto cadastrado com sucesso!`;
+        } else {
+            msg.innerHTML = `O nome deve ter ao menos 3 letras e o preço deve ser positivo.`;
+        }
+    }
+
+    function atualizarEstoque() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum produto cadastrado.`;
+            return;
+        }
+
+        let total = 0;
+        let lista = `Você tem ${nomes.length} produtos cadastrados em estoque:<br><br>`;
+
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${i + 1}. ${nomes[i]} - R$${Number(precos[i]).toFixed(2)}<br>`;
+            total += precos[i];
+            i++;
+        }
+
+        lista += `<br>Seu estoque vale R$${total.toFixed(2)}`;
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let valor = Number(ipt_valor.value);
+        let opcao = sel_filtro.value;
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (opcao == 'acima' && precos[i] > valor) {
+                lista += `${i + 1}. ${nomes[i]} - R$${Number(precos[i]).toFixed(2)}<br>`;
+            }
+            if (opcao == 'abaixo' && precos[i] < valor) {
+                lista += `${i + 1}. ${nomes[i]} - R$${Number(precos[i]).toFixed(2)}<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhum produto encontrado com esse filtro.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+2. Registro de Produtos
+Crie um programa o qual:  
+
+a) Pergunte ao usuário o preço e o nome de um produto; 
+
+b) Ao clicar em "Cadastrar", caso o preço seja positivo e o nome contenha ao menos 3 letras, registra as informações num lugar que o usuário não vê e exibe uma mensagem de sucesso. Caso contrário, exibe uma mensagem explicativa; 
+
+c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços e o nome dos produtos cadastrados e  um texto como este abaixo:  
+
+     Você tem AAA produtos cadastrados em estoque:
+
+     1. BBB - R$CCC 
+
+     2. BBB - R$CCC  
+
+     Seu estoque vale R$DDD 
+
+Em AAA é a quantidade de produtos cadastrados pelo usuário, BBB o nome do produto, CCC o preço do produto e DDD é a soma de todos os valores. 
+
+d) Tenha uma select com as opções "Preços acima de" e "Preços abaixo de" e um campo "Valor".
+
+e) Ao clicar no botão "Filtrar Produtos", deve exibir a lista de produtos filtrada de acordo com o valor informado no campo e a opção selecionada.
+
+OBS: caso escolha "Preços acima de" e o valor seja "20", deve exibir somente produtos cadastrados com preço acima de 20
+-->

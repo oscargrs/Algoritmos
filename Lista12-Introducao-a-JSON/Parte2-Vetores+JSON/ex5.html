@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h1>Cadastro de Usuários do Sistema</h1>
+
+    Nome:
+    <input type="text" id="ipt_nome">
+
+    Idade:
+    <input type="number" id="ipt_idade">
+
+    Cargo:
+    <input type="text" id="ipt_cargo">
+
+    <button onclick="cadastrar()">Cadastrar Usuário</button>
+    <button onclick="exibirTodos()">Exibir Todos</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let usuarios = [];
+
+    function cadastrar() {
+        let usuario = {
+            nome: ipt_nome.value,
+            idade: Number(ipt_idade.value),
+            cargo: ipt_cargo.value
+        };
+
+        if (usuario.cargo == 'Administrador') {
+            usuario.acesso = 'Total';
+        } else {
+            usuario.acesso = 'Limitado';
+        }
+
+        usuarios[usuarios.length] = usuario;
+
+        ipt_nome.value = '';
+        ipt_idade.value = '';
+        ipt_cargo.value = '';
+
+        msg.innerHTML = `
+            Usuário: ${usuario.nome}<br>
+            Cargo: ${usuario.cargo}<br>
+            Nível de acesso: ${usuario.acesso}`;
+    }
+
+    function exibirTodos() {
+        if (usuarios.length == 0) {
+            msg.innerHTML = 'Nenhum usuário cadastrado.';
+            return;
+        }
+
+        let lista = '';
+        let i = 0;
+        while (i < usuarios.length) {
+            lista += `
+                Usuário: ${usuarios[i].nome}<br>
+                Cargo: ${usuarios[i].cargo}<br>
+                Nível de acesso: ${usuarios[i].acesso}<br><br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+</script>
+
+<!--
+5. Cadastro de Usuários do Sistema
+Crie um programa o qual:
+
+a) O usuário informe:
+
+   nome;
+   idade;
+   cargo;
+
+b) Ao clicar em "Cadastrar Usuário", crie um objeto JSON chamado usuario;
+c) Verifique:
+
+se o cargo for "Administrador", crie o atributo acesso com valor "Total";
+caso contrário, "Limitado";
+
+d) Exiba:
+
+   Usuário: Amanda
+   Cargo: Administrador
+   Nível de acesso: Total
+
+e) Mantenha os usuários cadastrados em uma lista e permita exibir todos eles um abaixo do outro.
+-->

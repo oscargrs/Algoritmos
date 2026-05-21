@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<body>
+    <h1>Caixa de Músicas</h1>
+
+    Nome da música:
+    <input type="text" id="ipt_musica">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button>
+
+    <br><br>
+
+    De: <input type="number" id="ipt_de">
+    Até: <input type="number" id="ipt_ate">
+
+    <button onclick="filtrar()">Filtrar</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let musicas = [];
+
+    function cadastrar() {
+        let nome = ipt_musica.value;
+        musicas[musicas.length] = nome;
+        ipt_musica.value = '';
+        msg.innerHTML = 'Música cadastrada com sucesso!';
+    }
+
+    function exibir() {
+        if (musicas.length == 0) {
+            msg.innerHTML = 'Nenhuma música cadastrada.';
+            return;
+        }
+
+        let lista = '';
+        let i = 0;
+        while (i < musicas.length) {
+            lista += `${i + 1}. ${musicas[i]}<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let de = Number(ipt_de.value);
+        let ate = Number(ipt_ate.value);
+
+        if (de < 1 || ate > musicas.length || de > ate) {
+            msg.innerHTML = `Intervalo inválido.`;
+            return;
+        }
+
+        let lista = '';
+        let i = de - 1;
+        while (i < ate) {
+            lista += `${i + 1}. ${musicas[i]}<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+</script>
+
+<!--
+1. Caixa de Músicas
+ Crie um programa o qual:
+
+a) O usuário informa os nomes das músicas que mais gosta e clica em "Cadastrar"; 
+
+b) Ao clicar em "Exibir", as músicas vão aparecendo uma abaixo da outra, abaixo do botão. 
+
+c) Tenha dois campos "De..." e "Até...", que recebem um intervalo de dois números crescentes.
+
+d) Ao clicar em "Filtrar", deve exibir as músicas que estão dentro daquele intervalo.
+
+OBS: se o usuário informar "de 1 até 5", deve mostrar da primeira música até a quinta música da lista.
+-->

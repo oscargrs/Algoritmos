@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h1>Cadastro de Jogos com Conversão de Texto</h1>
+
+    Nome do Jogo:
+    <input type="text" id="ipt_nome"> <br>
+    Empresa:
+    <input type="text" id="ipt_empresa"> <br>
+    Plataforma:
+    <input type="text" id="ipt_plataforma"> <br> <br>
+
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        let jogo = {
+            nome: ipt_nome.value,
+            empresa: ipt_empresa.value,
+            plataforma: ipt_plataforma.value
+        };
+
+        let nomeF = jogo.nome.toUpperCase();
+        let empF = jogo.empresa.toLowerCase();
+
+        display.innerHTML = `
+            Jogo: ${nomeF}<br>
+            Empresa: ${empF}<br>
+            Plataforma: ${jogo.plataforma}`;
+    }
+</script>
+
+<!--
+7. Cadastro de Jogos com Conversão de Texto
+Crie um programa o qual:
+
+a) O usuário informe:
+
+nome do jogo;
+empresa;
+plataforma;
+b) Ao clicar em "Cadastrar Jogo", crie um objeto JSON chamado jogo;
+
+c) Faça as seguintes alterações:
+
+transforme o nome do jogo em letras maiúsculas;
+transforme a empresa em letras minúsculas;
+d) Exiba:
+
+Jogo: MINECRAFT
+Empresa: mojang
+Plataforma: PC
+-->

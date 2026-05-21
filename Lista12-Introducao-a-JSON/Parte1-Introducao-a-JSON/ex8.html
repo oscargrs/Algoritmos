@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h1>Cadastro de Comprador e Produto</h1>
+
+    Nome do comprador:
+    <input type="text" id="ipt_comprador"><br>
+    E-mail do comprador:
+    <input type="email" id="ipt_email"><br>
+    Nome do produto:
+    <input type="text" id="ipt_produto"><br>
+    Valor do produto:
+    <input type="number" id="ipt_valor"><br>
+
+    <button onclick="finalizar()">Finalizar Compra</button>
+
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    function finalizar() {
+        let comprador = {
+            nome: ipt_comprador.value,
+            email: ipt_email.value
+        };
+
+        let produto = {
+            nome: ipt_produto.value,
+            valor: Number(ipt_valor.value)
+        };
+
+        display.innerHTML = `
+            Comprador: ${comprador.nome} | ${comprador.email}<br><br>
+            Produto: ${produto.nome}<br>
+            Valor: R$${produto.valor}`;
+
+        console.log(comprador);
+        console.log(produto);
+    }
+</script>
+
+<!--
+8. Cadastro de Comprador e Produto
+Crie um programa o qual:
+
+a) O usuário informe:
+
+nome do comprador;
+e-mail do comprador;
+nome do produto;
+valor do produto;
+b) Ao clicar em "Finalizar Compra", crie:
+
+um objeto JSON chamado comprador;
+um objeto JSON chamado produto;
+c) Exiba:
+
+Comprador: Carlos | carlos@email.com
+
+Produto: Headset
+Valor: R$250
+
+d) Mostre os dois objetos no console.log().
+-->

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+</head>
+<body>
+    <h1>Catálogo de Filmes</h1>
+
+    Nome do filme:
+    <input type="text" id="ipt_nome">
+
+    Gênero:
+    <input type="text" id="ipt_genero">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="msg_contador"></div>
+
+    <br>
+
+    <button onclick="listar()">Listar Filmes</button>
+
+    <br><br>
+
+    De: <input type="number" id="ipt_de">
+    Até: <input type="number" id="ipt_ate">
+
+    <button onclick="filtrarRegistro()">Filtrar Filmes por Registro</button>
+
+    <br><br>
+
+    Gênero:
+    <input type="text" id="ipt_filtroGenero">
+
+    <button onclick="filtrarGenero()">Filtrar Filmes por Gênero</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let generos = [];
+
+    function cadastrar() {
+        nomes[nomes.length] = ipt_nome.value;
+        generos[generos.length] = ipt_genero.value;
+        ipt_nome.value = '';
+        ipt_genero.value = '';
+        msg_contador.innerHTML = `Você já assistiu ${nomes.length} filmes`;
+    }
+
+    function listar() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum filme cadastrado.`;
+            return;
+        }
+
+        let lista = '';
+        let i = nomes.length - 1;
+        while (i >= 0) {
+            lista += `${i + 1}. ${nomes[i]} - ${generos[i]}<br>`;
+            i--;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrarRegistro() {
+        let de = Number(ipt_de.value);
+        let ate = Number(ipt_ate.value);
+
+        if (de < 1 || ate > nomes.length || de > ate) {
+            msg.innerHTML = `Intervalo inválido.`;
+            return;
+        }
+
+        let lista = '';
+        let i = ate - 1;
+        while (i >= de - 1) {
+            lista += `${i + 1}. ${nomes[i]} - ${generos[i]}<br>`;
+            i--;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrarGenero() {
+        let generoFiltro = ipt_filtroGenero.value.toLowerCase();
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (generos[i].toLowerCase() == generoFiltro) {
+                lista += `${i + 1}. ${nomes[i]} - ${generos[i]}<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhum filme encontrado com esse gênero.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+12. Catálogo de Filmes
+Crie um programa o qual:
+
+a) Pergunte ao usuário o nome e o gênero de cada filme que já viu na vida. Ele digita e clica em "Cadastrar". Na medida em que vai cadastrando, verifique quantos filmes já foram assistidos e exiba abaixo do botão:  "Você já assistiu X filmes". 
+
+b) Tenha um botão "Listar Filmes", que quando clicado, mostra os filmes cadastrados, um abaixo do outro, em ordem inversa ao que foi cadastrado.
+
+c) Receba um intervalo crescente de dois números, que servem para filtrar a ordem dos filmes vistos de acordo com o mínimo e máximo inserido.
+
+d) Ao clicar no botão "Filtrar Filmes por Registro", deve exibir os filmes em ordem inversa, porém filtrando de acordo com o mínimo e máximo solicitado pelo usuário.
+
+e) Receba um gênero informado pelo usuário, que servem para filtrar os filmes inseridos.
+
+f) Ao clicar no botão "Filtrar Filmes por Gênero", deve exibir os filmes na ordem em que foram cadastrados, porém filtrando de acordo com o gênero solicitado pelo usuário.
+-->

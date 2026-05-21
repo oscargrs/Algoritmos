@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h1>Biblioteca de Jogos de Tabuleiro</h1>
+
+    Nome do jogo:
+    <input type="text" id="ipt_nome">
+
+    Quantidade de jogadores:
+    <input type="number" id="ipt_jogadores">
+
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+    <button onclick="listar()">Listar Jogos</button>
+
+    <br><br>
+
+    Quantidade de jogadores:
+    <input type="number" id="ipt_filtroJogadores">
+
+    <button onclick="filtrar()">Filtrar por Jogadores</button>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let nomes = [];
+    let jogadores = [];
+
+    function cadastrar() {
+        nomes[nomes.length] = ipt_nome.value;
+        jogadores[jogadores.length] = Number(ipt_jogadores.value);
+        ipt_nome.value = '';
+        ipt_jogadores.value = '';
+        msg.innerHTML = `Jogo cadastrado com sucesso!`;
+    }
+
+    function listar() {
+        if (nomes.length == 0) {
+            msg.innerHTML = `Nenhum jogo cadastrado.`;
+            return;
+        }
+
+        let lista = `Total de jogos cadastrados: ${nomes.length}<br><br>`;
+        let i = 0;
+        while (i < nomes.length) {
+            lista += `${i + 1}. ${nomes[i]} - ${jogadores[i]} jogadores<br>`;
+            i++;
+        }
+        msg.innerHTML = lista;
+    }
+
+    function filtrar() {
+        let qtd = Number(ipt_filtroJogadores.value);
+
+        let lista = '';
+        let i = 0;
+        while (i < nomes.length) {
+            if (jogadores[i] == qtd) {
+                lista += `${i + 1}. ${nomes[i]} - ${jogadores[i]} jogadores<br>`;
+            }
+            i++;
+        }
+
+        if (lista == '') {
+            msg.innerHTML = `Nenhum jogo encontrado com essa quantidade de jogadores.`;
+        } else {
+            msg.innerHTML = lista;
+        }
+    }
+</script>
+
+<!--
+7. Biblioteca de Jogos de Tabuleiro
+Crie um programa o qual:
+
+a) O usuário informe o nome do jogo de tabuleiro e a quantidade de jogadores;
+b) Ao clicar em "Cadastrar Jogo", registre os dados;
+c) Ao clicar em "Listar Jogos", mostre os jogos cadastrados um abaixo do outro;
+d) Exiba também uma mensagem com a quantidade total de jogos cadastrados;
+e) Tenha um campo para informar a quantidade de jogadores e um botão "Filtrar por Jogadores";
+f) Ao clicar no botão, devem aparecer apenas os jogos que tenham a quantidade de jogadores informada.
+-->

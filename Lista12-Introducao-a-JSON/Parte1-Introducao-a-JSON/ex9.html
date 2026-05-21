@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9</title>
+</head>
+<body>
+    <h1>Cadastro de Viagens com Destino Internacional</h1>
+
+    Destino:
+    <input type="text" id="ipt_destino"><br>
+    Preço da viagem:
+    <input type="number" id="ipt_preco"><br>
+    Quantidade de dias:
+    <input type="number" id="ipt_dias"><br>
+
+    <button onclick="cadastrar()">Cadastrar Viagem</button>
+
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        let viagem = {
+            destino: ipt_destino.value,
+            preco: Number(ipt_preco.value),
+            dias: Number(ipt_dias.value)
+        };
+
+        if (viagem.preco > 5000) {
+            viagem.tipo = 'Internacional Premium';
+        } else {
+            viagem.tipo = 'Viagem Nacional';
+        }
+
+        display.innerHTML = `
+            Destino: ${viagem.destino}<br>
+            Preço: R$${viagem.preco}<br>
+            Dias: ${viagem.dias}<br>
+            Tipo: ${viagem.tipo}`;
+    }
+</script>
+
+<!--
+9. Cadastro de Viagens com Destino Internacional
+Crie um programa o qual:
+
+a) O usuário informe:
+
+destino;
+preço da viagem;
+quantidade de dias;
+b) Ao clicar em "Cadastrar Viagem", crie um objeto JSON chamado viagem;
+
+c) Verifique:
+
+se o preço for maior que 5000, crie o atributo tipo com valor "Internacional Premium";
+caso contrário, "Viagem Nacional".
+d) Exiba:
+
+Destino: Paris
+Preço: R$8000
+Dias: 10
+Tipo: Internacional Premium
+-->
